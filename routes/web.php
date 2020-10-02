@@ -37,6 +37,10 @@ Route::post('/products/{product}','CartController@updateCart')->name('cart.updat
 Route::post('/product/{product}','CartController@removeCart')->name('cart.remove');
 Route::get('/cart','CartController@showCart')->name('cart.show');
 
+
+
+Route::get('/checkout/{amount}','CartController@checkout')->name('cart.checkout');
+
 Route::resource('category','CategoryController');
 Route::resource('product','ProductController');
 Route::get('/shop', 'FrontendController@index');
@@ -52,14 +56,7 @@ Route::group(['prefix'=>'auth','middleware'=>['auth','isAdmin']],function(){
 
 	Route::resource('category','CategoryController');
 	Route::resource('product','ProductController');
-
-	// Route::get('slider/create','SliderController@create')->name('slider.create');
-	// Route::get('slider','SliderController@index')->name('slider.index');
-	// Route::post('slider','SliderController@store')->name('slider.store');
-	// Route::delete('slider/{id}','SliderController@destroy')->name('slider.destroy');
-
 	Route::get('users','UserController@index')->name('user.index');
-
 	//orders
 	Route::get('/orders','CartController@userOrder')->name('order.index');
 	Route::get('/orders/{userid}/{orderid}','CartController@viewUserOrder')->name('user.order');

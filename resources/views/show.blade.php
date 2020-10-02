@@ -1,4 +1,4 @@
-@extends('layouts.nav')
+@extends('layouts.app')
 
 @section('content')
 
@@ -39,8 +39,8 @@
 
     <hr>
     
-    {{-- <a href="{{route('add.cart',[$product->id])}}" class="btn btn-lg btn-outline-primary text-uppercase">  Add to cart </a> --}}
-    <a class="btn btn-lg btn-outline-primary text-uppercase" > Add to cart </a>
+    <a href="{{route('add.cart',[$product->id])}}" class="btn btn-lg btn-outline-primary text-uppercase">  Add to cart </a>
+    {{-- <a class="btn btn-lg btn-outline-primary text-uppercase" > Add to cart </a> --}}
 
   
 
@@ -71,8 +71,8 @@
                 <div class="btn-group">
                  <a href="{{route('product.view',[$product->id])}}"> <button type="button" class="btn btn-sm btn-outline-success">View</button>
                  </a>
-                 {{-- <a href="{{route('add.cart',[$product->id])}}"> <button type="button" class="btn btn-sm btn-outline-primary">Add to cart</button></a> --}}
-                 <a class="btn btn-sm btn-outline-primary" > Add to cart </a>
+                 <a href="{{route('add.cart',[$product->id])}}"> <button type="button" class="btn btn-sm btn-outline-primary">Add to cart</button></a>
+                 {{-- <a class="btn btn-sm btn-outline-primary" > Add to cart </a> --}}
                 </div>
                 <small class="text-muted">thb{{$product->price}}</small>
               </div>

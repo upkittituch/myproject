@@ -3,7 +3,11 @@
 
 <div class="contrainer">
   <main role="main">
-
+    <div class="container">
+      {{-- <h2>Category</h2>
+      @foreach(App\Category::all() as $cat)
+          <a href="{{route('product.list',[$cat->name])}}"> <button class="btn btn-secondary">{{$cat->name}}</button></a>
+      @endforeach --}}
   
 
     <div class="album py-5 bg-light">
