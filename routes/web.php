@@ -29,7 +29,7 @@ Route::get('/index',function(){
 
 Route::get('/shop/{id}','FrontendController@show')->name('product.view');
 
-Route::get('/orders','CartController@order')->name('order')->middleware('auth');
+Route::get('/orders','CartController@order')->name('order');
 Route::get('/checkout/{amount}','CartController@checkout')->name('cart.checkout');
 Route::post('/charge','CartController@charge')->name('cart.charge');
 Route::get('/addToCart/{product}','CartController@addToCart')->name('add.cart');

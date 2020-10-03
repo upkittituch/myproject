@@ -8,6 +8,8 @@ use App\Cart;
 use App\Order;
 use App\User;
 use App\Mail\Sendmail;
+use Cartalyst\Stripe\Laravel\Facades\Stripe;
+
 
 class CartController extends Controller
 {
@@ -45,7 +47,7 @@ class CartController extends Controller
     	$cart  = new Cart(session()->get('cart'));
     	$cart->updateQty($product->id,$request->qty);
     	session()->put('cart',$cart);
-    	notify()->success(' Cart updated!');
+    	
         return redirect()->back();
 
     }
@@ -60,7 +62,7 @@ class CartController extends Controller
     		
 
     	}
-    	notify()->success(' Cart updated!');
+    	
             return redirect()->back();
     }
 
@@ -75,7 +77,7 @@ class CartController extends Controller
 
     public function charge(Request $request){
         $charge = Stripe::charges()->create([
-            'currency'=>"USD",
+            'currency'=>"thb",
             'source'=>$request->stripeToken,
             'amount'=>$request->amount,
             'description'=>'Test'
@@ -87,18 +89,18 @@ class CartController extends Controller
         }else{
             $cart = null;
         } 
-        \Mail::to(auth()->user()->email)->send(new Sendmail($cart));
+        
 
       
 
         if($chargeId){
-            auth()->user()->orders()->create([
+            orders()->create([
 
                 'cart'=>serialize(session()->get('cart'))
             ]);
 
             session()->forget('cart');
-            notify()->success(' Transaction completed!');
+            
             return redirect()->to('/');
 
         }else{
@@ -107,8 +109,8 @@ class CartController extends Controller
 
     }
     //for loggedin user
-    public function order(){
-        $orders = auth()->user()->orders;
+    public function order($request){
+        $orders = $request->orders;
         $carts =$orders->transform(function($cart,$key){
             return unserialize($cart->cart);
 
