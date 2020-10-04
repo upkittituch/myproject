@@ -25,7 +25,6 @@ class CartController extends Controller
 
 
     	session()->put('cart',$cart);
-    	 notify()->success('Product added to cart!');
         return redirect()->back();
 
     }
@@ -77,7 +76,7 @@ class CartController extends Controller
 
     public function charge(Request $request){
         $charge = Stripe::charges()->create([
-            'currency'=>"thb",
+            'currency'=>"USD",
             'source'=>$request->stripeToken,
             'amount'=>$request->amount,
             'description'=>'Test'
@@ -109,29 +108,29 @@ class CartController extends Controller
 
     }
     //for loggedin user
-    public function order($request){
-        $orders = $request->orders;
-        $carts =$orders->transform(function($cart,$key){
-            return unserialize($cart->cart);
+    // public function order($request){
+    //     $orders = $request->orders;
+    //     $carts =$orders->transform(function($cart,$key){
+    //         return unserialize($cart->cart);
 
-        });
-        return view('order',compact('carts'));
+    //     });
+    //     return view('order',compact('carts'));
 
-    }
+   // }
 
-    //for admin
-    public function userOrder(){
-        $orders = Order::latest()->get();
-        return view('admin.order.index',compact('orders'));
-    }
-    public function viewUserOrder($userid,$orderid){
-        $user = User::find($userid);
-        $orders = $user->orders->where('id',$orderid);
-        $carts =$orders->transform(function($cart,$key){
-            return unserialize($cart->cart);
+    // //for admin
+    // public function userOrder(){
+    //     $orders = Order::latest()->get();
+    //     return view('admin.order.index',compact('orders'));
+    // }
+    // public function viewUserOrder($userid,$orderid){
+    //     $user = User::find($userid);
+    //     $orders = $user->orders->where('id',$orderid);
+    //     $carts =$orders->transform(function($cart,$key){
+    //         return unserialize($cart->cart);
 
-        });
-        return view('admin.order.show',compact('carts'));
-    }
+    //     });
+    //     return view('admin.order.show',compact('carts'));
+    // }
 
 }
