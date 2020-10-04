@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+
+<script src="https://static.line-scdn.net/liff/edge/versions/2.4.1/sdk.js"></script>
 <style>
   .StripeElement {
   box-sizing: border-box;
