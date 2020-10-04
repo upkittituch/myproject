@@ -22,6 +22,7 @@
         "sass-loader": "^8.0.0"
     },
     "dependencies": {
-        "@fortawesome/fontawesome-free": "^5.15.0"
+        "@fortawesome/fontawesome-free": "^5.15.0",
+        "stripe-client": "^1.1.5"
     }
 }

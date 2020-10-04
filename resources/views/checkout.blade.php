@@ -136,7 +136,7 @@ Total Price:${{$cart->totalPrice}}
 <script type="text/javascript">
   // Create a Stripe client.
 window.onload=function(){
-var stripe = Stripe('pk_test_no5YZwniXP4Qw4l5HKzJi3fS');
+var stripe = Stripe('pk_test_51HX8OSEJdvtfnGl3rcrbGeBmzTlr8CBEoMr9RsCAOJqW70oJifg2In4xEex6rp9ZjYsyfGgqCURGfdVfLKid5Bdl00iFW90nBg');
 
 // Create an instance of Elements.
 var elements = stripe.elements();
