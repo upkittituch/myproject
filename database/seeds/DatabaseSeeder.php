@@ -1,6 +1,5 @@
 <?php
 use App\Category;
-use App\Subcategory;
 use App\Product;
 use App\User;
 use Illuminate\Database\Seeder;
@@ -15,6 +14,20 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // $this->call(UsersTableSeeder::class);
+        Category::create([
+            'name'=>'shirt'
+        ]);
+        Category::create([
+            'name'=>'t-shirt'
+        ]);
+        Category::create([
+            'name'=>'polo'
+        ]);
+        Category::create([
+            'name'=>'vest'
+        ]);
+        
+
         User::create([
         	'name'=>'Kittituch',
         	'email'=>'admin@gmail.com',
