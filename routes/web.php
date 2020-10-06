@@ -29,9 +29,9 @@ Route::get('/index',function(){
 
 Route::get('/shop/{id}','FrontendController@show')->name('product.view');
 
-Route::get('/orders','CartController@order')->name('order');
+Route::get('/orders','CartController@order')->name('order')->middleware('auth');
 Route::get('/checkout/{amount}','CartController@checkout')->name('cart.checkout');
-Route::post('/charge','CartController@charge')->name('cart.charge');
+Route::post('/charge','CartController@charge')->name('cart.charge')->middleware('auth');
 Route::get('/addToCart/{product}','CartController@addToCart')->name('add.cart');
 Route::post('/products/{product}','CartController@updateCart')->name('cart.update');
 Route::post('/product/{product}','CartController@removeCart')->name('cart.remove');

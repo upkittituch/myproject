@@ -7,7 +7,6 @@ use App\Product;
 use App\Cart;
 use App\Order;
 use App\User;
-use App\Mail\Sendmail;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
 
 
@@ -93,7 +92,7 @@ class CartController extends Controller
       
 
         if($chargeId){
-            orders()->create([
+            auth()->user()->orders()->create([
 
                 'cart'=>serialize(session()->get('cart'))
             ]);
@@ -108,15 +107,15 @@ class CartController extends Controller
 
     }
     //for loggedin user
-    // public function order($request){
-    //     $orders = $request->orders;
-    //     $carts =$orders->transform(function($cart,$key){
-    //         return unserialize($cart->cart);
+    public function order($request){
+        $orders = $request->orders;
+        $carts =$orders->transform(function($cart,$key){
+            return unserialize($cart->cart);
 
-    //     });
-    //     return view('order',compact('carts'));
+        });
+        return view('order',compact('carts'));
 
-   // }
+   }
 
     // //for admin
     // public function userOrder(){
