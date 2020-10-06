@@ -40,7 +40,7 @@ class DatabaseSeeder extends Seeder
         Product::create([
             'name'=>'shirt 2 ',
             'desc'=>'shirt number 2',
-            'image'=>'product/qSl0ePTS4D3eGVeGiH8iiGZltgNAqhnTFgLMg9Hn',
+            'image'=>'product/qSl0ePTS4D3eGVeGiH8iiGZltgNAqhnTFgLMg9Hn.jpeg',
             'price'=>'12',
             'category_id'=>'1'
         ]);

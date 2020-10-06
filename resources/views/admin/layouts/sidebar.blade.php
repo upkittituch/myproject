@@ -34,9 +34,15 @@
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="forms.html">
+        <a class="nav-link" href="{{route('category.index')}}">
           <i class="fab fa-fw fa-wpforms"></i>
-          <span>Forms</span>
+          <span>category</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{route('product.index')}}">
+          <i class="fab fa-fw fa-wpforms"></i>
+          <span>product</span>
         </a>
       </li>
       <li class="nav-item">
@@ -48,8 +54,8 @@
         <div id="collapseTable" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Tables</h6>
-            <a class="collapse-item" href="{{route('category.index')}}">category</a>
-            <a class="collapse-item" href="{{route('product.index')}}">product</a>
+            <!-- <a class="collapse-item" href="{{route('category.index')}}">category</a>
+            <a class="collapse-item" href="{{route('product.index')}}">product</a> -->
           </div>
         </div>
       </li>
