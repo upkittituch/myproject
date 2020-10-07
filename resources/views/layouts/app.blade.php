@@ -48,7 +48,7 @@
                         <ul class="navbar-nav ml-auto">
                             @if(Auth::check())
                             <li class="nav-item">  <a class="nav-link" href="{{route('order')}}">Order</a></li>
-                          @endif
+                            @endif
                           <a href="{{route('cart.show')}}" class="nav-link">
                             <span class="fas fa-shopping-cart">
                              ({{session()->has('cart')?session()->get('cart')->totalQty:'0'}})

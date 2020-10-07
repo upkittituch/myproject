@@ -7,6 +7,7 @@ use App\Product;
 use App\Cart;
 use App\Order;
 use App\User;
+use App\Mail\Sendmail;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
 
 
@@ -87,7 +88,7 @@ class CartController extends Controller
         }else{
             $cart = null;
         } 
-        
+        \Mail::to(auth()->user()->email)->send(new Sendmail($cart));
 
       
 
@@ -107,8 +108,8 @@ class CartController extends Controller
 
     }
     //for loggedin user
-    public function order($request){
-        $orders = $request->orders;
+    public function order(){
+        $orders = auth()->user()->orders;
         $carts =$orders->transform(function($cart,$key){
             return unserialize($cart->cart);
 

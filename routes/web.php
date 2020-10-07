@@ -58,7 +58,8 @@ Route::group(['prefix'=>'auth','middleware'=>['auth','isAdmin']],function(){
 	Route::resource('product','ProductController');
 	Route::get('users','UserController@index')->name('user.index');
 	//orders
-	Route::get('/orders','CartController@userOrder')->name('order.index');
+	
+	Route::get('/orders','CartController@userOrder')->name('order.index')->middleware('auth');
 	Route::get('/orders/{userid}/{orderid}','CartController@viewUserOrder')->name('user.order');
 
 
