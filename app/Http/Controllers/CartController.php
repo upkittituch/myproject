@@ -118,19 +118,19 @@ class CartController extends Controller
 
    }
 
-    // //for admin
-    // public function userOrder(){
-    //     $orders = Order::latest()->get();
-    //     return view('admin.order.index',compact('orders'));
-    // }
-    // public function viewUserOrder($userid,$orderid){
-    //     $user = User::find($userid);
-    //     $orders = $user->orders->where('id',$orderid);
-    //     $carts =$orders->transform(function($cart,$key){
-    //         return unserialize($cart->cart);
+    //for admin
+    public function userOrder(){
+        $orders = Order::latest()->get();
+        return view('admin.order.index',compact('orders'));
+    }
+    public function viewUserOrder($userid,$orderid){
+        $user = User::find($userid);
+        $orders = $user->orders->where('id',$orderid);
+        $carts =$orders->transform(function($cart,$key){
+            return unserialize($cart->cart);
 
-    //     });
-    //     return view('admin.order.show',compact('carts'));
-    // }
+        });
+        return view('admin.order.show',compact('carts'));
+    }
 
 }
