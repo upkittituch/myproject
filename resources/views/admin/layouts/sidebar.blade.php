@@ -1,13 +1,15 @@
 <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="dashboard">
         <div class="sidebar-brand-icon">
-          <img src="{{asset('admin/img/logo/logo2.png')}}">
+         <!-- <img src="{{asset('admin/img/logo/logo2.png')}}">   text-warning logo -->
+         <i class="fas fa-robot fa-2x " >
+         </i>
         </div>
-        <div class="sidebar-brand-text mx-3">RuangAdmin</div>
+        <div class="sidebar-brand-text mx-3 " >mybot</div>
       </a>
       <hr class="sidebar-divider my-0">
       <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="dashboard">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -26,6 +28,12 @@
         <a class="nav-link" href="{{route('product.index')}}">
           <i class="fab fa-fw fa-wpforms"></i>
           <span>product</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{route('order.index')}}">
+          <i class="fab fa-fw fa-wpforms"></i>
+          <span>order</span>
         </a>
       </li>
       <!-- <li class="nav-item">

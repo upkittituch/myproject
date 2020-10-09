@@ -95,7 +95,8 @@ class CartController extends Controller
         if($chargeId){
             auth()->user()->orders()->create([
 
-                'cart'=>serialize(session()->get('cart'))
+                'cart'=>serialize(session()->get('cart')),
+               
             ]);
 
             session()->forget('cart');
@@ -132,5 +133,7 @@ class CartController extends Controller
         });
         return view('admin.order.show',compact('carts'));
     }
+    
+
 
 }

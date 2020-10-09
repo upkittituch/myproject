@@ -29,6 +29,7 @@
                         <th>Date</th>
                         <th>Status</th>
                         <th>View</th>
+                        <th>edit status</th>
                         
                       </tr>
                     </thead>
@@ -46,6 +47,11 @@
                         <td>
                             <a href="{{route('user.order',[$order->user_id,$order->id])}}">
                                 <button class="btn btn-info">View Order</button>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="">
+                                <button class="btn btn-info">edit</button>
                             </a>
                         </td>
                         

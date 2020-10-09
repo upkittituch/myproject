@@ -126,5 +126,19 @@ class DatabaseSeeder extends Seeder
         	'email_verified_at'=>NOW(),
         	'is_admin'=>1
         ]);
+        User::create([
+        	'name'=>'usertest1',
+        	'email'=>'test1@gmail.com',
+        	'password'=>bcrypt('123456789'),
+        	'email_verified_at'=>NOW(),
+        	'is_admin'=>0
+        ]);
+        User::create([
+        	'name'=>'usertest2',
+        	'email'=>'test2@gmail.com',
+        	'password'=>bcrypt('123456789'),
+        	'email_verified_at'=>NOW(),
+        	'is_admin'=>0
+        ]);
     }
 }
