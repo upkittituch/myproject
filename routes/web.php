@@ -22,10 +22,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::get('/index',function(){
-    return view ('admin.dashboard');
-});
-
 
 Route::get('/shop/{id}','FrontendController@show')->name('product.view');
 
@@ -60,7 +56,8 @@ Route::group(['prefix'=>'auth','middleware'=>['auth','isAdmin']],function(){
 	//orders
 	
 	Route::get('/orders','CartController@userOrder')->name('order.index')->middleware('auth');
-
+	Route::get('/orders/{userid}/{orderid}/edit','CartController@editStatus')->name('status.edit');
+	Route::put('/orders/{userid}/{orderid}/edit','CartController@updateStatus')->name('status.update');
 	Route::get('/orders/{userid}/{orderid}','CartController@viewUserOrder')->name('user.order');
 
 

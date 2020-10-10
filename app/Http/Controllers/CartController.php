@@ -133,10 +133,18 @@ class CartController extends Controller
         });
         return view('admin.order.show',compact('carts'));
     }
-    public function updateStatus($id){
+    public function editStatus($id){
+        
         $orders = Order::find($id);
+        return view('admin.order.status',compact('orders'));
+    }
 
-        return view('admin.order.edit',compact('orders'));
+    public function updateStatus(Request $request, $id){
+        $orders = Order::find($id);
+        $orders->status=$request->input('status');
+        $orders->save();
+        return redirect('auth/orders');
+      
     }
     
 

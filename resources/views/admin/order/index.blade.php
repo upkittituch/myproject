@@ -50,7 +50,7 @@
                             </a>
                         </td>
                         <td>
-                            <a href="{{route('status.edit ',[$order->id])}}">
+                            <a href="{{route('status.edit',[$order->user_id,$order->id])}}">
                                 <button class="btn btn-info">edit</button>
                             </a>
                         </td>
