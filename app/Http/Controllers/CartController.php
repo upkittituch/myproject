@@ -133,6 +133,11 @@ class CartController extends Controller
         });
         return view('admin.order.show',compact('carts'));
     }
+    public function updateStatus($id){
+        $orders = Order::find($id);
+
+        return view('admin.order.edit',compact('orders'));
+    }
     
 
 

@@ -60,7 +60,7 @@ Route::group(['prefix'=>'auth','middleware'=>['auth','isAdmin']],function(){
 	//orders
 	
 	Route::get('/orders','CartController@userOrder')->name('order.index')->middleware('auth');
-	
+
 	Route::get('/orders/{userid}/{orderid}','CartController@viewUserOrder')->name('user.order');
 
 
