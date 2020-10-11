@@ -6,7 +6,7 @@
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Order Tables</h1>
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="./">Home</a></li>
+              <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
               <li class="breadcrumb-item">Order</li>
               <li class="breadcrumb-item active" aria-current="page">Order Tables</li>
             </ol>
@@ -43,7 +43,15 @@
                         <td>{{$order->user->name}}</td>
                         <td>{{$order->user->email}}</td>
                         <td>{{date('d-M-y',strtotime($order->created_at))}}</td>
-                        <td>{{$order->status}}</td>
+                        
+                          @if($order->status == 'success')
+                            <td><span style='font-size:17px' class="badge badge-success">{{$order->status}}</span></td>
+                          @elseif ($order->status=='cancel')
+                          <td ><span style='font-size:17px' class="badge badge-danger">{{$order->status}}</span></td>  
+                          @elseif ($order->status=='unconfirmed')
+                          <td ><span style='font-size:17px' class="badge badge-warning">{{$order->status}}</span></td>   
+                          @endif
+                        
                         <td>
                             <a href="{{route('user.order',[$order->user_id,$order->id])}}">
                                 <button class="btn btn-info">View Order</button>
