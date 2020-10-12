@@ -9,6 +9,7 @@ use App\Order;
 use App\User;
 use App\Mail\Sendmail;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
+use DB;
 
 
 class CartController extends Controller
@@ -79,7 +80,7 @@ class CartController extends Controller
             'currency'=>"USD",
             'source'=>$request->stripeToken,
             'amount'=>$request->amount,
-            'description'=>'Test'
+            'description'=>'pay status'
         ]);
 
         $chargeId = $charge['id'];
@@ -115,6 +116,7 @@ class CartController extends Controller
             return unserialize($cart->cart);
 
         });
+        // dd($day);
         return view('order',compact('carts'));
 
    }
@@ -133,6 +135,7 @@ class CartController extends Controller
         });
         return view('admin.order.show',compact('carts'));
     }
+    //status payment
     public function editStatus($id){
         
         $orders = Order::find($id);
