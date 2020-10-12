@@ -37,7 +37,7 @@
  			<p>
  				<button type="button" class="btm btn-success">
  					<span class="">
- 						ราคารวม:${{$cart->totalPrice}}
+ 						ราคารวม:{{$cart->totalPrice}} ฿
  					</span>
  				</button>
  			</p>

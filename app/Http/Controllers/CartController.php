@@ -77,7 +77,7 @@ class CartController extends Controller
 
     public function charge(Request $request){
         $charge = Stripe::charges()->create([
-            'currency'=>"USD",
+            'currency'=>"THB",
             'source'=>$request->stripeToken,
             'amount'=>$request->amount,
             'description'=>'pay status'

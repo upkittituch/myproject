@@ -17,7 +17,7 @@
                       <label for="">status</label>
 
                           <select name="status" id="status">
-                            <option value="{{$orders->status}}">{{$orders->status}}</option>
+                            <option value="{{$orders->status}}">{{$orders->pay_status}}</option>
                             <option value="success">success</option>
                             <option value="cancel">cancel</option>
                             

@@ -25,7 +25,7 @@
 
 <p class="price-detail-wrap"> 
     <span class="price h3 text-danger"> 
-        <span class="currency">$ </span>{{$product->price}}
+        <span class="currency">ราคา </span>{{$product->price}}
     </span> 
      
 </p> <!-- price-detail-wrap .// -->
@@ -74,7 +74,7 @@
                  <a href="{{route('add.cart',[$product->id])}}"> <button type="button" class="btn btn-sm btn-outline-primary">Add to cart</button></a>
                  {{-- <a class="btn btn-sm btn-outline-primary" > Add to cart </a> --}}
                 </div>
-                <small class="text-muted">${{$product->price}}</small>
+                <small class="text-muted">ราคา {{$product->price}}฿</small>
               </div>
             </div>
           </div>

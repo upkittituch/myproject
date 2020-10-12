@@ -33,7 +33,7 @@
       
       <td><img src="{{Storage::url($product['image'])}}" width="50"></td>
       <td>{{$product['name']}}</td>
-      <td>${{$product['price']}}</td>
+      <td>ราคา {{$product['price']}} ฿</td>
       <td>
     <form action="{{route('cart.update',$product['id'])}}" method="post">@csrf
         <input type="text" name="qty" size="2"value="{{$product['qty']}}">

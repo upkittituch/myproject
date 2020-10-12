@@ -17,7 +17,8 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->unsignedInteger('user_id');
             $table->text('cart');
-            $table->text('status')->default('unconfirmed');
+            $table->text('pay_status')->default('unconfirmed');
+            $table->text('tracking')->default('processed'); 
             $table->timestamps();
         });
     }
