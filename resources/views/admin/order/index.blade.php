@@ -23,7 +23,7 @@
                   <table class="table align-items-center table-flush">
                     <thead class="thead-light">
                       <tr>
-                        <th>SN</th>
+                        <th>id</th>
                         <th>Name</th>
                         <th>Email</th>
                         <th>Date</th>
@@ -35,10 +35,10 @@
                     </thead>
                     <tbody>
                       @if(count($orders)>0)
-                      @foreach($orders as $key=> $order)
+                      @foreach($orders as $order)
                       <tr>
 
-                        <td><a href="#">{{$key+1}}</a></td>
+                        <td><a href="#">{{$order->id}}</a></td>
                        
                         <td>{{$order->user->name}}</td>
                         <td>{{$order->user->email}}</td>
@@ -66,7 +66,12 @@
                        
                       </tr>
                       @endforeach
-
+                      <div class="row">
+                        <div class="col-12 text-center">
+                          {{$orders->links()}}
+                        </div>
+                      </div>
+          </div>
                       @else
                       <td>No any orders to show</td>
                       @endif
@@ -79,7 +84,7 @@
                 <div class="card-footer"></div>
               </div>
             </div>
-          </div>
+            
           <!--Row-->
         </div>
 

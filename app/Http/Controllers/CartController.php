@@ -121,7 +121,7 @@ class CartController extends Controller
 
     //for admin
     public function userOrder(){
-        $orders = Order::latest()->get();
+        $orders = Order::latest()->paginate(8);
         return view('admin.order.index',compact('orders'));
     }
     public function viewUserOrder($userid,$orderid){

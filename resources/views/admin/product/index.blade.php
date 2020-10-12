@@ -56,6 +56,11 @@
                          
                       </tr>
                       @endforeach
+                      <div class="row">
+                        <div class="col-12 text-center">
+                          {{$products->links()}}
+                        </div>
+                      </div>
                       @else
                       <td>No any product</td>
                       @endif
