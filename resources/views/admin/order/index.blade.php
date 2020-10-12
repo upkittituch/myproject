@@ -27,9 +27,9 @@
                         <th>Name</th>
                         <th>Email</th>
                         <th>Date</th>
-                        <th>Status</th>
+                        <th>playment</th>
                         <th>View</th>
-                        <th>edit status</th>
+                        <th>edit playment</th>
                         
                       </tr>
                     </thead>

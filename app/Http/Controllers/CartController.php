@@ -123,6 +123,7 @@ class CartController extends Controller
 
     //for admin
     public function userOrder(){
+        
         $orders = Order::latest()->paginate(8);
         return view('admin.order.index',compact('orders'));
     }
@@ -144,7 +145,7 @@ class CartController extends Controller
 
     public function updateStatus(Request $request, $id){
         $orders = Order::find($id);
-        $orders->status=$request->input('status');
+        $orders->status=$request->input('payment');
         $orders->save();
         return redirect('auth/orders');
       

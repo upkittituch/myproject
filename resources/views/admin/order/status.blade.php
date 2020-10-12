@@ -14,9 +14,9 @@
                 </div>
                 <div class="card-body">
                     <div class="form-group"> 
-                      <label for="">status</label>
+                      <label for="">payment</label>
 
-                          <select name="status" id="status">
+                          <select name="status" id="payment">
                             <option value="{{$orders->status}}">{{$orders->pay_status}}</option>
                             <option value="success">success</option>
                             <option value="cancel">cancel</option>
