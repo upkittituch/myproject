@@ -41,10 +41,10 @@
   <thead>
     <tr>
       {{-- <th scope="col">#</th> --}}
-      <th scope="col">Image</th>
-      <th scope="col">Product</th>
-      <th scope="col">Price</th>
-      <th scope="col">Qty</th>
+      <th scope="col">รูป</th>
+      <th scope="col">ชื่อสินค้า</th>
+      <th scope="col">ราคา</th>
+      <th scope="col">จำนวณ</th>
 
     </tr>
   </thead>
@@ -75,7 +75,7 @@
   </tbody>
 </table>
 <hr>
-Total Price:${{$cart->totalPrice}}
+ราคา {{$cart->totalPrice}} ฿
 </div>
 
  	<div class="col-md-6">
@@ -85,28 +85,23 @@ Total Price:${{$cart->totalPrice}}
 
  	     <form action="/charge" method="post" id="payment-form">@csrf
                       <div class="form-group">
-                        <label>Name</label>
+                        <label>ชื่อ นามสกุล</label>
                         <input type="text" name="name" id="name" class="form-control" required="">
                       </div>
                     
                       <div class="form-group">
 
-                        <label>Adress</label>
+                        <label>ที่อยู่</label>
                         <input type="text" name="address" id="address" class="form-control" required="">
                       </div>
                       <div class="form-group">
 
-                        <label>City</label>
-                        <input type="text" name="city" id="city" class="form-control" required="">
-                      </div>
-                      <div class="form-group">
-
-                        <label>State</label>
+                        <label>อาคาร - ห้อง</label>
                         <input type="text" name="state" id="state" class="form-control" required="">
                       </div>
                       <div class="form-group">
 
-                        <label>Postal code</label>
+                        <label>รหัสไปรษณีย์</label>
                         <input type="text" name="postalcode" id="postalcode" class="form-control" required="">
                       </div>
                       <div class="">
@@ -185,7 +180,6 @@ form.addEventListener('submit', function(event) {
   var options={
     name:document.getElementById('name').value,
     address_line1:document.getElementById('address').value,
-    address_city:document.getElementById('city').value,
     address_state:document.getElementById('state').value,
     address_zip:document.getElementById('postalcode').value
   }

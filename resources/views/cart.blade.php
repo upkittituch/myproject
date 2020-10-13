@@ -58,7 +58,7 @@
 <hr>
 <div class="card-footer">
 	<a href="{{url('/shop')}}"><button class="btn btn-primary">เลือกสินค้า</button></a>
-	<span style="margin-center:150px;">Total Price:${{$cart->totalPrice}}</span>
+	<span style="margin-center:150px;">ราคา {{$cart->totalPrice}} ฿</span>
 
 	<a href="{{route('cart.checkout',$cart->totalPrice)}}"><button class="btn btn-info float-right">Checkout</button></a>
 

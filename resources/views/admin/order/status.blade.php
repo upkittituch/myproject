@@ -16,8 +16,8 @@
                     <div class="form-group"> 
                       <label for="">payment</label>
 
-                          <select name="status" id="payment">
-                            <option value="{{$orders->status}}">{{$orders->pay_status}}</option>
+                          <select name="payment" id="payment">
+                            <option value="{{$orders->payment}}">{{$orders->payment}}</option>
                             <option value="success">success</option>
                             <option value="cancel">cancel</option>
                             

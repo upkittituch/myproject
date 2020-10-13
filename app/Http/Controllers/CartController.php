@@ -145,7 +145,7 @@ class CartController extends Controller
 
     public function updateStatus(Request $request, $id){
         $orders = Order::find($id);
-        $orders->status=$request->input('payment');
+        $orders->payment=$request->input('payment');
         $orders->save();
         return redirect('auth/orders');
       

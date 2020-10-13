@@ -8,7 +8,7 @@
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
               <li class="breadcrumb-item">Order</li>
-              <li class="breadcrumb-item active" aria-current="page">Order Tables</li>
+              
             </ol>
           </div>
 
@@ -44,12 +44,12 @@
                         <td>{{$order->user->email}}</td>
                         <td>{{date('d-M-y',strtotime($order->created_at))}}</td>
                         
-                          @if($order->pay_status == 'success')
-                            <td><span style='font-size:17px' class="badge badge-success">{{$order->pay_status}}</span></td>
-                          @elseif ($order->pay_status=='cancel')
-                          <td ><span style='font-size:17px' class="badge badge-danger">{{$order->pay_status}}</span></td>  
-                          @elseif ($order->pay_status=='unconfirmed')
-                          <td ><span style='font-size:17px' class="badge badge-warning">{{$order->pay_status}}</span></td>   
+                          @if($order->payment == 'success')
+                            <td><span style='font-size:17px' class="badge badge-success">{{$order->payment}}</span></td>
+                          @elseif ($order->payment=='cancel')
+                          <td ><span style='font-size:17px' class="badge badge-danger">{{$order->payment}}</span></td>  
+                          @elseif ($order->payment =='unconfirmed')
+                          <td ><span style='font-size:17px' class="badge badge-warning">{{$order->payment}}</span></td>   
                           @endif
                         
                         <td>
