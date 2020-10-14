@@ -23,6 +23,24 @@ class FrontendController extends Controller
 
         return view('show',compact('product','productFromSameCategories'));
     }
+    public function filter($name,Request $request ){
+        $category  = Category::where('name',$name)->first();
+        $categoryId = $category->id;
+        
+        if($request->subcategory){
+            $products = $this->filterProducts($request);
+            
+        }elseif($request->min||$request->max){
+            $products = $this->filterByPrice($request);
+
+        }else{
+            $products = Product::where('category_id',$category->id)->get();
+        }
+            
+           
+
+        return view('product',compact('products'));
+    }
    
    
     

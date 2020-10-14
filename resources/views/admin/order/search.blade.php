@@ -49,8 +49,8 @@
 
                         <td><a href="#">{{$order->id}}</a></td>
                        
-                        <td>{{$order->user->name}}</td>
-                        <td>{{$order->user->email}}</td>
+                        <td>{{$order->name}}</td>
+                        <td>{{$order->email}}</td>
                         <td>{{date('d-M-y',strtotime($order->created_at))}}</td>
                         
                           @if($order->payment == 'success')
@@ -60,20 +60,7 @@
                           @elseif ($order->payment =='unconfirmed')
                           <td ><span style='font-size:17px' class="badge badge-warning">{{$order->payment}}</span></td>   
                           @endif
-                        
-                        <td>
-                            <a href="{{route('user.order',[$order->user_id,$order->id])}}">
-                                <button class="btn btn-info">View Order</button>
-                            </a>
-                        </td>
-                        <td>
-                            <a href="{{route('status.edit',[$order->user_id,$order->id])}}">
-                                <button class="btn btn-info">edit</button>
-                            </a>
-                        </td>
-                        
-                       
-                      </tr>
+                    
                       @endforeach
                       <div class="row">
                         <div class="col-12 text-center">

@@ -16,13 +16,9 @@
             
             </section> 
         </aside>
-
-
-
         <aside class="col-sm-7">
             <section class="card-body p-5">
                 <h3 class="title mb-3">{{$product->name}}</h3>
-
 <p class="price-detail-wrap"> 
     <span class="price h3 text-danger"> 
         <span class="currency">ราคา </span>{{$product->price}}
@@ -31,22 +27,11 @@
 </p> <!-- price-detail-wrap .// -->
   <h3>Description</h3>
   <p>{!!$product->desc!!} </p>
-  
-
-
-    
-
-
-    <hr>
-    
+    <hr>  
     <a href="{{route('add.cart',[$product->id])}}" class="btn btn-lg btn-outline-primary text-uppercase">  Add to cart </a>
     {{-- <a class="btn btn-lg btn-outline-primary text-uppercase" > Add to cart </a> --}}
-
-  
-
 </section> 
         </aside> 
-
     </div> 
 </div> 
 @if(count($productFromSameCategories)>0)
@@ -59,9 +44,6 @@
         <div class="col-md-4">
           <div class="card mb-4 shadow-sm">
             <img src="{{Storage::url($product->image)}}" height="200" style="width: 100%">
-
-        
-
             <div class="card-body">
                 <p><b>{{$product->name}}</b></p>
               <p class="card-text">
@@ -81,7 +63,6 @@
         </div>
         @endforeach
       </div>
-
 </div>
 
 @endif

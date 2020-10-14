@@ -24,11 +24,9 @@
                         <th>Price</th>
                         <th>Category</th>
                         <th>Action</th>
-                        <th></th>
-                        
+                        <th></th>          
                       </tr>
                     </thead>
-                    
                     <tbody>
                       @if(count($products)>0)
                       @foreach($products as $product)
@@ -52,8 +50,6 @@
                             
                           </form>
                         </td>
-
-                         
                       </tr>
                       @endforeach
                       <div class="row">

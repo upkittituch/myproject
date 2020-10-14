@@ -9,7 +9,7 @@ use App\Order;
 use App\User;
 use App\Mail\Sendmail;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
-use DB;
+
 
 
 class CartController extends Controller
@@ -84,6 +84,7 @@ class CartController extends Controller
         ]);
 
         $chargeId = $charge['id'];
+        
         if(session()->has('cart')){
             $cart = new Cart(session()->get('cart'));
         }else{
@@ -95,7 +96,7 @@ class CartController extends Controller
 
         if($chargeId){
             auth()->user()->orders()->create([
-
+                
                 'cart'=>serialize(session()->get('cart')),
                
             ]);
@@ -126,6 +127,7 @@ class CartController extends Controller
         
         $orders = Order::latest()->paginate(8);
         return view('admin.order.index',compact('orders'));
+        
     }
     public function viewUserOrder($userid,$orderid){
         $user = User::find($userid);
@@ -150,6 +152,22 @@ class CartController extends Controller
         return redirect('auth/orders');
       
     }
+    public function search(Request $request){
+        $search= $request->get('search');
+      
+       
+        $orders = Order::with('user')->where('user_id',$search)->get();
+        
+            
+
+        
+        
+        return view('admin.order.index',['orders'=>$orders]);
+       
+    }
+
+    
+
     
 
 

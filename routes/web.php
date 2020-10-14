@@ -24,6 +24,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::get('/shop/{id}','FrontendController@show')->name('product.view');
+Route::get('/category/{name}','FrontendController@filter')->name('product.filter');
 
 Route::get('/orders','CartController@order')->name('order')->middleware('auth');
 Route::get('/checkout/{amount}','CartController@checkout')->name('cart.checkout');
@@ -59,7 +60,7 @@ Route::group(['prefix'=>'auth','middleware'=>['auth','isAdmin']],function(){
 	Route::get('/orders/{userid}/{orderid}/edit','CartController@editStatus')->name('status.edit');
 	Route::put('/orders/{userid}/{orderid}/edit','CartController@updateStatus')->name('status.update');
 	Route::get('/orders/{userid}/{orderid}','CartController@viewUserOrder')->name('user.order');
-
+	Route::get('/orders/search', 'CartController@search')->name('order.search');
 
 	
 
