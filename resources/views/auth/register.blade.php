@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
+<script src="https://static.line-scdn.net/liff/edge/versions/2.4.1/sdk.js"></script>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
