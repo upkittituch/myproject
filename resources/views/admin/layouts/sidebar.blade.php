@@ -25,6 +25,12 @@
         </a>
       </li>
       <li class="nav-item">
+        <a class="nav-link" href="{{route('company.index')}}">
+          <i class="fab fa-fw fa-wpforms"></i>
+          <span>company shipping</span>
+        </a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="{{route('product.index')}}">
           <i class="fab fa-fw fa-wpforms"></i>
           <span>product</span>

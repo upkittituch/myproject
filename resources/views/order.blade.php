@@ -1,39 +1,56 @@
 @extends('layouts.app')
 
 @section('content')
-
+  
  <div class="container">
  	
  	<div class="row justify-content-center">
+   
  		<div class="col-md-8">
- 			@foreach($carts as $cart)
- 			<div class="card mb-3">
- 				<div class="card-body">
- 					@foreach($cart->items as $item)
- 					<span class="float-right">
- 						<img src="{{Storage::url($item['image'])}}" width="100" height="100">
- 					</span>
+     <a class="fas fa-arrow-left" href="{{route('shop')}}"> ย้อนกลับ</a>
+		 <div class="table-responsive">
+                  <table class="table align-items-center table-flush">
+                    <thead class="thead-light">
+                      <tr>
+                        <th>#</th>
+                        <th>ชื่อ</th>
+                        <th>วันที่สั่ง</th>
+                        <th>ดูข้อมูล</th>
+                        <th>สถานะการจัดส่ง</th>
+                        
+                      </tr>
+                    </thead>
+                    <tbody>
+                      @if(count($orders)>0)
+                      @foreach($orders as $order)
+                      <tr>
 
- 					<p>ชื่อสินค้า:{{$item['name']}}</p>
- 					<p>ราคา:{{$item['price']}}</p>
- 					<p>จำนวณ:{{$item['qty']}}</p>
+                        <td><a href="#">{{$order->id}}</a></td>
+                       
+                        <td>{{$order->user->name}}</td>
+                        <td>{{date('d-M-y',strtotime($order->created_at))}}</td>
+					          
 
- 					@endforeach
- 					
- 				</div>
-
- 			</div>
- 			<p>
- 				<button type="button" class="btm btn-info" style="color: #fff;">
- 					<span class="">
- 						ราคารวม {{$cart->totalPrice}} ฿
- 					</span>
- 				</button>
- 			</p>
- 			<hr>
- 			@endforeach
+                        <td>
+                            <a href="{{route('user.view',[$order->user_id,$order->id])}}">
+                                <button class="btn btn-info"style="width:92; height:20">ดูข้อมูล</button>
+                            </a>
+                        </td>
+                        
+                        <td>
+                            <a href="{{route('user.tracking',[$order->user_id,$order->id])}}">
+                                <button class="btn btn-info"style="width:92; height:20">การจัดส่ง</button>
+                            </a>
+                        </td>
+                       
+                       
+                      </tr>
+                      @endforeach
  		</div>
  	</div>
+	 		          	@else
+                      <td>No any orders to show</td>
+                      @endif
  	
 
 

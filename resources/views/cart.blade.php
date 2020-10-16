@@ -3,6 +3,7 @@
 @section('content')
 
  <div class="container">
+ <a class="fas fa-arrow-left" href="{{route('shop')}}"> ย้อนกลับ</a>
    @if($errors->any())
 
    @foreach($errors->all() as $error)
@@ -14,11 +15,11 @@
   <thead>
     <tr>
       {{-- <th scope="col">#</th> --}}
-      <th scope="col">Image</th>
-      <th scope="col">Product</th>
-      <th scope="col">Price</th>
-      <th scope="col">Qty</th>
-      <th scope="col">Remove</th>
+      <th scope="col">รูป</th>
+      <th scope="col">ชื่อสินค้า</th>
+      <th scope="col">ราคา</th>
+      <th scope="col">จำนวณ</th>
+      <th scope="col">ลบ</th>
 
     </tr>
   </thead>

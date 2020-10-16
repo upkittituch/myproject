@@ -75,7 +75,7 @@
   </tbody>
 </table>
 <hr>
-ราคา {{$cart->totalPrice}} ฿
+ราคารวม {{$cart->totalPrice}} ฿
 </div>
 
  	<div class="col-md-6">
@@ -98,6 +98,12 @@
 
                         <label>อาคาร - ห้อง</label>
                         <input type="text" name="state" id="state" class="form-control" required="">
+                      </div>
+                      <div class="form-group">
+                      <div class="form-group">
+
+                        <label>เบอร์โทรศัพท์</label>
+                        <input type="text" name="phone" id="phone" class="form-control" required="">
                       </div>
                       <div class="form-group">
 
@@ -181,6 +187,7 @@ form.addEventListener('submit', function(event) {
     name:document.getElementById('name').value,
     address_line1:document.getElementById('address').value,
     address_state:document.getElementById('state').value,
+    phone:document.getElementById('phone').value,
     address_zip:document.getElementById('postalcode').value
   }
 

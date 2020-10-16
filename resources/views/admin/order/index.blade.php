@@ -21,9 +21,10 @@
                   <form action="{{route('order.search')}}" method ="get">
                   
                     <div class="form-group">
-                      <input type="search"  name="search" id="search" >
+                       <label >ค้นหา</label>
+                      <input type="search"  name="search" id="search"placeholder=" id หรือ name"   >
                       <span class="form-group-btn"> 
-                      <button type="submit" class="btn btn-info">search</button>
+                      <button type="submit" class="btn btn-info" >ค้นหา</button>
                       </span>
                     </div>
                     </form>
@@ -37,8 +38,9 @@
                         <th>เมล์</th>
                         <th>วันที่สั่ง</th>
                         <th>สถานะการจ่าย</th>
+                        <th>สถานะการจัดส่ง</th>
                         <th>ดูข้อมูล</th>
-                        <th>แก้ไขสถานะการจ่าย</th>
+                        <th>แก้ไขสถานะ</th>
                         
                       </tr>
                     </thead>
@@ -49,16 +51,24 @@
 
                         <td><a href="#">{{$order->id}}</a></td>
                        
-                        <td>{{$order->user->name}}</td>
+                        <td>{{$order->name}}</td>
                         <td>{{$order->user->email}}</td>
                         <td>{{date('d-M-y',strtotime($order->created_at))}}</td>
-                        
+                          
                           @if($order->payment == 'success')
-                            <td><span style='font-size:17px' class="badge badge-success">{{$order->payment}}</span></td>
+                          <td><span style='font-size:17px' class="badge badge-success">{{$order->payment}}</span></td>
                           @elseif ($order->payment=='cancel')
                           <td ><span style='font-size:17px' class="badge badge-danger">{{$order->payment}}</span></td>  
                           @elseif ($order->payment =='unconfirmed')
                           <td ><span style='font-size:17px' class="badge badge-warning">{{$order->payment}}</span></td>   
+                          @endif
+                          
+                          @if($order->tracking == 'packing')
+                          <td><span style='font-size:17px' class="badge badge-warning">{{$order->tracking}}</span></td>
+                          @elseif ($order->tracking=='processed')
+                          <td ><span style='font-size:17px' class="badge badge-secondary">{{$order->tracking}}</span></td>  
+                          @elseif ($order->tracking =='delivered')
+                          <td ><span style='font-size:17px' class="badge badge-success">{{$order->tracking}}</span></td>   
                           @endif
                         
                         <td>

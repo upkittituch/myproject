@@ -16,9 +16,13 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->unsignedInteger('user_id');
+            $table->text('name');
             $table->text('cart');
+            $table->text('company')->default('-');
             $table->text('payment')->default('unconfirmed');
-            $table->text('tracking')->default('processed'); 
+            $table->text('tracking')->default('processed');
+            $table->text('tracking_number')->default('-');
+            $table->text('phone');
             $table->timestamps();
         });
     }

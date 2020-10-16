@@ -9,6 +9,7 @@ use App\Order;
 use App\User;
 use App\Mail\Sendmail;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
+use App\Company;
 
 
 
@@ -66,9 +67,13 @@ class CartController extends Controller
             return redirect()->back();
     }
 
-    public function checkout($amount){
+    public function checkout($amount,Request $request){
+      
+           
+        
         if(session()->has('cart')){
             $cart = new Cart(session()->get('cart'));
+         
         }else{
             $cart = null;
         }  
@@ -76,13 +81,15 @@ class CartController extends Controller
     }
 
     public function charge(Request $request){
+        
         $charge = Stripe::charges()->create([
             'currency'=>"THB",
             'source'=>$request->stripeToken,
             'amount'=>$request->amount,
-            'description'=>'pay status'
+            'description'=>'pay status',
+           
         ]);
-
+        
         $chargeId = $charge['id'];
         
         if(session()->has('cart')){
@@ -98,12 +105,14 @@ class CartController extends Controller
             auth()->user()->orders()->create([
                 
                 'cart'=>serialize(session()->get('cart')),
-               
+                'phone'=>$request->phone  , 
+                'name'=>$request->name   
             ]);
+           
 
             session()->forget('cart');
             
-            return redirect()->to('/');
+            return redirect()->to('/shop');
 
         }else{
             return redirect()->back();
@@ -113,12 +122,8 @@ class CartController extends Controller
     //for loggedin user
     public function order(){
         $orders = auth()->user()->orders;
-        $carts =$orders->transform(function($cart,$key){
-            return unserialize($cart->cart);
-
-        });
-        // dd($day);
-        return view('order',compact('carts'));
+        
+        return view('order',compact('orders'));
 
    }
 
@@ -139,15 +144,18 @@ class CartController extends Controller
         return view('admin.order.show',compact('carts'));
     }
     //status payment
-    public function editStatus($id){
-        
-        $orders = Order::find($id);
-        return view('admin.order.status',compact('orders'));
+    public function editStatus($id,$orderid){
+        $company = Company::get();
+        $orders = Order::find($orderid);
+        return view('admin.order.status',compact('orders','company'));
     }
 
-    public function updateStatus(Request $request, $id){
-        $orders = Order::find($id);
+    public function updateStatus(Request $request, $id,$orderid){
+        $orders = Order::find($orderid);
         $orders->payment=$request->input('payment');
+        $orders->tracking=$request->input('tracking');
+        $orders->company=$request->input('company');
+        $orders->tracking_number=$request->input('tracking_number');
         $orders->save();
         return redirect('auth/orders');
       
@@ -156,7 +164,7 @@ class CartController extends Controller
         $search= $request->get('search');
       
        
-        $orders = Order::with('user')->where('user_id',$search)->get();
+        $orders = Order::with('user')->where('user_id',$search)->orWhere('name',$search)->get();
         
             
 
@@ -165,6 +173,29 @@ class CartController extends Controller
         return view('admin.order.index',['orders'=>$orders]);
        
     }
+    public function orderuser($userid,$orderid){
+        $user = User::find($userid);
+        $orders = $user->orders->where('id',$orderid);
+        $carts =$orders->transform(function($cart,$key){
+            return unserialize($cart->cart);
+
+        });
+        return view('orderuser',compact('carts'));
+       
+    }
+
+    public function tracking($userid,$orderid){
+        $inform = Order::find($orderid)->where('id',$orderid)->get();
+        $user = User::find($userid);
+        $orders = $user->orders->where('id',$orderid);
+        $carts =$orders->transform(function($cart,$key){
+            return unserialize($cart->cart);
+
+        });
+        return view('trackinguser',compact('carts','inform'));
+       
+    }
+    
 
     
 

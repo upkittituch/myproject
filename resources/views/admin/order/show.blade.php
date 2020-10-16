@@ -1,7 +1,7 @@
 @extends('admin.layouts.main')
 
 @section('content')
-
+			
         <div class="container-fluid" id="container-wrapper">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Order Tables</h1>
@@ -14,10 +14,12 @@
 
            	<div class="row justify-content-center">
  		<div class="col-md-8">
+		 <a class="fas fa-arrow-left" href="{{route('order.index')}}"> ย้อนกลับ</a>
  			@foreach($carts as $cart)
 
  			<div class="card mb-3">
  				<div class="card-body">
+				 
  					@foreach($cart->items as $item)
  					<span class="float-right">
  						<img src="{{Storage::url($item['image'])}}" width="100" height="100">

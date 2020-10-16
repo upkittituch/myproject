@@ -21,9 +21,10 @@
                   <form action="{{route('order.search')}}" method ="get">
                   
                     <div class="form-group">
-                      <input type="search"  name="search" id="search" >
+                      <label for="">ค้นหา id user</label>
+                      <input type="search"  name="search" id="search" placeholder="ตัวอย่าง : 123" >
                       <span class="form-group-btn"> 
-                      <button type="submit" class="btn btn-info">search</button>
+                      <button type="submit" class="btn btn-info" >ค้นหา</button>
                       </span>
                     </div>
                     </form>

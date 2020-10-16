@@ -2,6 +2,7 @@
 use App\Category;
 use App\Product;
 use App\User;
+use App\Company;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,6 +15,18 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // $this->call(UsersTableSeeder::class);
+        Company::create([
+            'id'=>'1',
+            'company_name'=>'Kerry  Express'
+        ]);
+        Company::create([
+            'id'=>'2',
+            'company_name'=>'Thai Post'
+        ]);
+        Company::create([
+            'id'=>'3',
+            'company_name'=>'DHL'
+        ]);
         Category::create([
             'id'=>'1',
             'name'=>'shirt'

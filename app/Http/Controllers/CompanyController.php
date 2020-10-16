@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Category;
-use DB;
+use App\Company;
 
-class CategoryController extends Controller
+class CompanyController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $category = Category::all();
-        return view('admin.category.index',compact('category'));
+        $company = Company::all();
+        return view('admin.company.index',compact('company'));
     }
 
     /**
@@ -26,7 +25,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view ('admin.category.create');
+        return view ('admin.company.create');
     }
 
     /**
@@ -38,19 +37,14 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'name'=>'required',
+            'company_name'=>'required',
             
         ]);
      
-        $category = new Category();
-        $category->name=$request->input('name');
-        $category->save();
-        return redirect()->route('category.index');
-       
-
-
-
-
+        $company = new Company();
+        $company->company_name=$request->input('company_name');
+        $company->save();
+        return redirect()->route('company.index');
     }
 
     /**
@@ -72,8 +66,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $category = Category::find($id);
-        return view('admin.category.edit',compact('category'));
+        $company = Company::find($id);
+        return view('admin.company.edit',compact('company'));
     }
 
     /**
@@ -85,9 +79,9 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $category = Category::find($id);
-        $category->name= $request->name;
-        $category->save();
+        $company = Company::find($id);
+        $company->company_name= $request->company_name;
+        $company->save();
         return redirect()->route('category.index');
     }
 
@@ -99,8 +93,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $category = Category::find($id)->delete();
-        return redirect()->route('category.index');
-    
+        $company = Company::find($id)->delete();
+        return redirect()->route('company.index');
     }
 }
