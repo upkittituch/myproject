@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Cart;
+use App\Order;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -24,7 +27,11 @@ class HomeController extends Controller
     public function index()
     {
         if(auth()->user()->is_admin==1){
-            return view('admin/dashboard');
+
+            
+            $user = User::get();   
+            return view('admin/dashboard',compact('user'));
+
            }else{
                 return redirect()->to('/shop');
            }
