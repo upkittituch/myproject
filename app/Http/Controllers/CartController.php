@@ -106,7 +106,9 @@ class CartController extends Controller
                 
                 'cart'=>serialize(session()->get('cart')),
                 'phone'=>$request->phone  , 
-                'name'=>$request->name   
+                'name'=>$request->name   ,
+                'address'=>$request->address,
+                'postalcode'=>$request->postalcode
             ]);
            
 

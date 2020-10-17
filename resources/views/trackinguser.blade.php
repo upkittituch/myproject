@@ -12,7 +12,7 @@
             <article class="card">
                 <div class="card-body row">
                     <div class="col"> <strong>บริษัทที่จัดส่งสินค้า:</strong> <br> {{$informs->company}} </div>
-                   
+                    <div class="col"> <strong>ที่อยู่ที่จัดส่ง:</strong> <br> {{$informs->address}} <span>{{$informs->postalcode}} </span></div>
                     <div class="col"> <strong>Tracking #:</strong> <br> {{$informs->tracking_number}} </div>
                 </div>@endforeach
             </article>

@@ -23,15 +23,18 @@
  					@endforeach
  					
  				</div>
-
+			
+ 				  
+				   <div class="card-body row">
+			  
+					  <div class="col"> <strong>ราคารวม: {{$cart->totalPrice}}  ฿</div>
+					  
+				  </div>
+				 
  			</div>
- 			<p>
- 				<button type="button" class="btm btn-info" style="color: #fff;">
- 					<span class="">
- 						ราคารวม: {{$cart->totalPrice}}  ฿
- 					</span>
- 				</button>
- 			</p>
+ 			
+		
+ 			
  			<hr>
  			@endforeach
  		</div>

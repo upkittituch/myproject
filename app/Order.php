@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\User;
 class Order extends Model
 {
-    protected $fillable = ['cart','payment','phone','name','company','tracking_number'];
+    protected $fillable = ['cart','payment','phone','name','company','tracking_number','postalcode','address'];
     
 
     public function user(){

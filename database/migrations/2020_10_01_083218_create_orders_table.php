@@ -23,6 +23,8 @@ class CreateOrdersTable extends Migration
             $table->text('tracking')->default('processed');
             $table->text('tracking_number')->default('-');
             $table->text('phone');
+            $table->text('address');
+            $table->text('postalcode');
             $table->timestamps();
         });
     }
