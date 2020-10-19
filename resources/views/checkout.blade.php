@@ -1,15 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-
-<script src="https://static.line-scdn.net/liff/edge/versions/2.4.1/sdk.js"></script>
 <style>
-  .StripeElement {
+ 
+ .StripeElement {
   box-sizing: border-box;
 
-  height: 40px;
+  height: 20px;
 
-  padding: 10px 12px;
 
   border: 1px solid transparent;
   border-radius: 4px;
@@ -31,85 +29,37 @@
 .StripeElement--webkit-autofill {
   background-color: #fefde5 !important;
 }
+
 </style>
-
- <div class="container">
-    <div class="row">
-        <div class="col-md-6">
-
-           <table class="table">
-  <thead>
-    <tr>
-      {{-- <th scope="col">#</th> --}}
-      <th scope="col">รูป</th>
-      <th scope="col">ชื่อสินค้า</th>
-      <th scope="col">ราคา</th>
-      <th scope="col">จำนวณ</th>
-
-    </tr>
-  </thead>
-  <tbody>
-
-    @if($cart)
-  @php $i=1 @endphp
-
-@foreach($cart->items as $product)
-    <tr>
-      {{-- <th scope="row">{{$i++}}</th> --}}
-      
-      <td><img src="{{Storage::url($product['image'])}}" width="100" height="100"></td>
-      <td>{{$product['name']}}</td>
-      <td>${{$product['price']}}</td>
-      <td>
-        {{$product['qty']}}
-    </td>
-      <td>
-    
-      </td>
-    </tr>
-   @endforeach
-   @endif
+<script src="https://static.line-scdn.net/liff/edge/versions/2.4.1/sdk.js"></script>
 
 
-
-  </tbody>
-</table>
-<hr>
-ราคารวม {{$cart->totalPrice}} ฿
-</div>
-
- 	<div class="col-md-6">
- 		<div class="card">
- 			<div class="card-header">Checkout</div>
- 			<div class="card-body">
-
+<div class="col-md-6"> 	
+<div class="card">
+ 	<div class="card-header">Checkout</div>
+ 		<div class="card-body">
  	     <form action="/charge" method="post" id="payment-form">@csrf
-                      <div class="form-group">
-                        <label>ชื่อ นามสกุล</label>
-                        <input type="text" name="name" id="name" class="form-control" required="">
-                      </div>
-                    
-                      <div class="form-group">
-
-                        <label>ที่อยู่</label>
-                        <input type="text" name="address" id="address" class="form-control" required="">
-                      </div>
-                      <div class="form-group">
-
-                        <label>เบอร์โทรศัพท์</label>
-                        <input type="text" name="phone" id="phone" class="form-control" required="">
-                      </div>
-                      <div class="form-group">
-
-                        <label>รหัสไปรษณีย์</label>
-                        <input type="text" name="postalcode" id="postalcode" class="form-control" required="">
-                      </div>
-                      <div class="">
-              <input type="hidden" name="amount" value="{{$amount}}">
-
-
+          <div class="form-group">
+            <label>ชื่อ นามสกุล</label>
+              <input type="text" name="name" id="name" class="form-control" required="">
+          </div>
+            <div class="form-group">
+              <label>ที่อยู่</label>
+                <input type="text" name="address" id="address" class="form-control" required="">
+            </div>
+              <div class="form-group">
+                <label>เบอร์โทรศัพท์</label>
+                  <input type="text" name="phone" id="phone" class="form-control" required="">
+            </div>
+              <div class="form-group">
+                <label>รหัสไปรษณีย์</label>
+                  <input type="text" name="postalcode" id="postalcode" class="form-control" required="">
+              </div>
+                <input type="hidden" name="amount" value="{{$amount}}">
+                  
+                 
                 <div class="">
-                <label for="card-element">
+                <label for="card-element ">
                     Credit or debit card
                   </label>
                   <div id="card-element">
@@ -119,15 +69,13 @@
                   <!-- Used to display form errors. -->
                   <div id="card-errors" role="alert"></div>
                 </div>
-
-                <button class="btn btn-primary mt-4" type="submit">Submit Payment</button>
-   
-            </form>
-            </div>
-        </div>
+               
+                      <button class="btn btn-primary " type="submit">Submit Payment</button>
+              
+            </form> 
     </div>
-</div>
-</div>
+  </div>
+</div></div>
 
 <script src="https://js.stripe.com/v3/"></script>
 <script type="text/javascript">
@@ -145,7 +93,7 @@ var style = {
     color: '#32325d',
     fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
     fontSmoothing: 'antialiased',
-    fontSize: '16px',
+    fontSize: '8px',
     '::placeholder': {
       color: '#aab7c4'
     }
@@ -211,4 +159,5 @@ function stripeTokenHandler(token) {
 }
 }
 </script>
+
 @endsection

@@ -23,10 +23,12 @@ class CartController extends Controller
     	}else{
     		$cart = new Cart();
     	}
-    	$cart->add($product);
+        $cart->add($product);
+        
 
 
-    	session()->put('cart',$cart);
+        session()->put('cart',$cart);
+        notify()->success('เพิ่มสินค้า เรียบร้อยแล้ว!');
         return redirect()->back();
 
     }
@@ -94,6 +96,7 @@ class CartController extends Controller
         
         if(session()->has('cart')){
             $cart = new Cart(session()->get('cart'));
+            
         }else{
             $cart = null;
         } 
@@ -167,11 +170,7 @@ class CartController extends Controller
       
        
         $orders = Order::with('user')->where('user_id',$search)->orWhere('name',$search)->get();
-        
-            
 
-        
-        
         return view('admin.order.index',['orders'=>$orders]);
        
     }
@@ -197,11 +196,4 @@ class CartController extends Controller
         return view('trackinguser',compact('carts','inform'));
        
     }
-    
-
-    
-
-    
-
-
 }
