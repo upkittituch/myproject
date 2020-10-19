@@ -119,9 +119,11 @@
         <div class="grand-total space-mt--20">
             <div class="container">
                 <div class="row">
-                    <div class="col-12">
+                    <div class=" col">
                         <h4 class="grand-total-title"> Total <span>{{$cart->totalPrice}} บาท</span></h4>
+                        
                         <a href="{{route('cart.checkout',$cart->totalPrice)}}">Checkout</a>
+                        
                     </div>
                 </div>
             </div><br><br><br><br>
@@ -193,6 +195,9 @@ div.img-resize {
 	overflow: hidden;
 	text-align: center;
 }
+
+
+
 </style>
           
             

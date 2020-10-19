@@ -111,7 +111,7 @@
        
         </div>
         <div class="hero-slider bg-color--grey space-y--10">
-       
+        <div class="body-wrapper bg-color--gradient space-pt--70 space-pb--120">
             <div class="container">
                 <div class="row row-10">
                     <div class="col-12">

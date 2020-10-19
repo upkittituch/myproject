@@ -125,8 +125,9 @@ class CartController extends Controller
 
     }
     //for loggedin user
-    public function order(){
+    public function order(){ 
         $orders = auth()->user()->orders;
+        
         
         return view('order',compact('orders'));
 

@@ -79,7 +79,7 @@
     <!--====================  preloader area ====================-->
   
     <!--====================  End of preloader area  ====================-->
-    <div class="body-wrapper bg-color--gradient space-pt--40 space-pb--30">
+    <div class="body-wrapper bg-color--gradient space-pt--40 space-pb--60">
         <!--====================  header area ====================-->
         
  	<div class="col-md-6">
@@ -134,9 +134,9 @@
                   <!-- Used to display form errors. -->
                   <div id="card-errors" role="alert"></div>
                 </div>
-                    <div class='vertical-center'>
-                    <button class="btn btn-primary mt-4" type="submit">Submit Payment</button>
-                    </div>
+                    <br>
+                    <button class="btn btn-success col-12" type="submit">Submit Payment</button>
+                
                 
    
             </form>
@@ -278,6 +278,8 @@ function stripeTokenHandler(token) {
   form.submit();
 }
 }
+
+
 </script>
 
 @endsection
