@@ -2,45 +2,18 @@
 
 @section('content')
 
-<!-- <div class="contrainer">
+ <!-- <div class="contrainer">
   <main role="main">
     <div class="container">
     <h2>Category</h2>
       @foreach(App\Category::all() as $cat)
           <a href="{{route('product.filter',[$cat->name])}}"> <button class="btn btn-secondary">{{$cat->name}}</button></a>
       @endforeach 
-  
+   -->
 
-    <div class="album py-5 bg-light">
-      <div class="container">
+     
 
-        <div class="row">
-          @foreach($products as $product)
-          <div class="col-md-4">
-            <div class="card mb-4 box-shadow">
-            <img class="card-img-top" src="{{Storage::url($product->image)}}" alt="Card image cap" width="180"  height="280"  >
-              <div class="card-body">
-                <p class="card-text">{{$product->name}}</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <a href="{{route('product.view',[$product->id])}}"> <button type="button" class="btn btn-sm btn-outline-success">View</button>
-                    <a href="{{route('add.cart',[$product->id])}}"><button type="button" class="btn btn-sm btn-outline-secondary">add to cart</button></a>
-                  </div>
-                  <small class="text-muted">ราคา {{$product->price}} ฿</small>
-                </div>
-              </div>
-            </div>
-            
-          </div>
-          @endforeach
-        </div>
-        
-      </div>
-    </div>
 
-  </main>
-
-</div> -->
 <link rel="icon" href="{{asset('img/favicon.ico')}}">
     <!-- CSS
 		============================================ -->
@@ -61,7 +34,24 @@
 			-->
     <!-- Main Style CSS -->
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
-   
+   <!-- Modernizer JS -->
+    <script src="{{asset('js/modernizr-2.8.3.min.js')}}"></script>
+    <!-- jQuery JS -->
+    <script src="{{asset('js/jquery-3.5.1.min.js')}}"></script>
+    <!-- Bootstrap JS -->
+    <script src="{{asset('js/bootstrap.min.js')}}"></script>
+    <!-- IonRanger JS -->
+    <script src="{{asset('js/plugins/ion.rangeSlider.min.js')}}"></script>
+    <!-- SVG inject JS -->
+    <script src="{{asset('js/plugins/svg-inject.min.js')}}"></script>
+    <!-- Slick slider JS -->
+    <script src="{{asset('js/plugins/slick.min.js')}}"></script>
+    <!-- Plugins JS (Please remove the comment from below plugins.min.js for better website load performance and remove plugin js files from above) -->
+    <!--
+  <script src="assets/js/plugins/plugins.min.js"></script>
+-->
+    <!-- Main JS -->
+    <script src="{{asset('js/main.js')}}"></script>
 
 <body>
     <!--====================  preloader area ====================-->

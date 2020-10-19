@@ -2,12 +2,12 @@
 
 @section('content')
 <style>
- 
- .StripeElement {
+  .StripeElement {
   box-sizing: border-box;
 
-  height: 20px;
+  height: 40px;
 
+  padding: 10px 12px;
 
   border: 1px solid transparent;
   border-radius: 4px;
@@ -29,37 +29,102 @@
 .StripeElement--webkit-autofill {
   background-color: #fefde5 !important;
 }
-
 </style>
-<script src="https://static.line-scdn.net/liff/edge/versions/2.4.1/sdk.js"></script>
+<head>
+    <meta charset="utf-8">
+    <!-- CSS
+		============================================ -->
+    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
+    <!-- Slick CSS -->
+    <link rel="stylesheet" href="{{asset('css/plugins/slick.min.css')}}">
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="{{asset('css/plugins/cssanimation.min.css')}}">
+    <!-- IonRange slider CSS -->
+    <link rel="stylesheet" href="{{asset('css/plugins/ion.rangeSlider.min.css')}}">
+    <!-- Vendor & Plugins CSS (Please remove the comment from below vendor.min.css & plugins.min.css for better website load performance and remove css files from above) -->
+    <!--
+			<link rel="stylesheet" href="assets/css/vendor.min.css">
+			<link rel="stylesheet" href="assets/css/plugins/plugins.min.css">
+			-->
+    <!-- Main Style CSS -->
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <header>
+            <div class="header-wrapper border-bottom">
+                <div class="container space-y--15">
+                    <div class="row align-items-center">
+                        <div class="col-auto">
+                            <!-- header logo -->
+                            <div class="header-logo">
+                                <a href="index.html">
+                                    <img src="{{asset('img/logo.png')}}" class="img-fluid" alt="">
+                                    
+                                </a>
+                               
+                            </div>
+                        </div>
+                        <div class="col d-flex justify-content-center">
+                            <!-- header search -->
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- search keywords -->
+          
+           
+</head>
+<body>
+    <!--====================  preloader area ====================-->
+  
+    <!--====================  End of preloader area  ====================-->
+    <div class="body-wrapper bg-color--gradient space-pt--40 space-pb--30">
+        <!--====================  header area ====================-->
+        
+ 	<div class="col-md-6">
+ 		<div class="card">
+     
+     <div class="breadcrumb-area bg-color--grey space-y--15">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-3">
+                        <a href="{{route('shop')}}" class="back-link"> <i class="fas fa-angle-left"></i> Back</a>
+                    </div>
+                    <div class="col-6">
+                        <h1 class="page-title text-center">Cart</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-
-<div class="col-md-6"> 	
-<div class="card">
- 	<div class="card-header">Checkout</div>
- 		<div class="card-body">
  	     <form action="/charge" method="post" id="payment-form">@csrf
-          <div class="form-group">
-            <label>ชื่อ นามสกุล</label>
-              <input type="text" name="name" id="name" class="form-control" required="">
-          </div>
-            <div class="form-group">
-              <label>ที่อยู่</label>
-                <input type="text" name="address" id="address" class="form-control" required="">
-            </div>
-              <div class="form-group">
-                <label>เบอร์โทรศัพท์</label>
-                  <input type="text" name="phone" id="phone" class="form-control" required="">
-            </div>
-              <div class="form-group">
-                <label>รหัสไปรษณีย์</label>
-                  <input type="text" name="postalcode" id="postalcode" class="form-control" required="">
-              </div>
-                <input type="hidden" name="amount" value="{{$amount}}">
-                  
-                 
+                      <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" name="name" id="name" class="form-control" required="" value="{{auth()->user()->name}}" readonly="">
+                      </div>
+                    
+                      <div class="form-group">
+
+                        <label>Adress</label>
+                        <input type="text" name="address" id="address" class="form-control" required="">
+                      </div>
+                      <div class="form-group">
+
+                        <label>phone</label>
+                        <input type="text" name="phone" id="phone" class="form-control" required="">
+                      </div>
+                      <div class="form-group">
+
+                        <label>Postal code</label>
+                        <input type="text" name="postalcode" id="postalcode" class="form-control" required="">
+                      </div>
+                      <div class="">
+              <input type="hidden" name="amount" value="{{$amount}}">
+
+
                 <div class="">
-                <label for="card-element ">
+                <label for="card-element">
                     Credit or debit card
                   </label>
                   <div id="card-element">
@@ -69,16 +134,72 @@
                   <!-- Used to display form errors. -->
                   <div id="card-errors" role="alert"></div>
                 </div>
-               
-                      <button class="btn btn-primary " type="submit">Submit Payment</button>
-              
-            </form> 
+                    <div class='vertical-center'>
+                    <button class="btn btn-primary mt-4" type="submit">Submit Payment</button>
+                    </div>
+                
+   
+            </form>
+            </div>
+        </div>
     </div>
-  </div>
-</div></div>
+</div>
+</div>
+<footer>
+        
+            <div class="footer-nav-wrapper">
+                <a href="{{route('shop')}}" class="footer-nav-single">
+                    <div class="menu-wrapper">
+                        <img src="{{asset('img/icons/home.svg')}}" class="injectable" alt="">
+                        <span>Home</span>
+                    </div>
+                </a>
+                
+                <a href="{{route('cart.show')}}" class="footer-nav-single">
+                    <div class="menu-wrapper">
+                        ({{session()->has('cart')?session()->get('cart')->totalQty:'0'}})
+                        
+                        <img src="{{asset('/img/icons/cart.svg')}}" class="injectable" alt="">
+                        
+                        <span>Cart</span>
+                    </div>
+                </a>
+                @if(Auth::check())
+                
+                      
+                <a href="{{route('order')}}" class="footer-nav-single">
+                    <div class="menu-wrapper">
+                        <img src="{{asset('img/icons/profile.svg')}}" class="injectable" alt="">
+                        <span>Profile</span>
+                    </div>
+                </a>
+                @endif
+            </div>
+        </footer>
+      
 
-<script src="https://js.stripe.com/v3/"></script>
-<script type="text/javascript">
+     
+     <script src="{{asset('js/modernizr-2.8.3.min.js')}}"></script>
+    <!-- jQuery JS -->
+    <script src="{{asset('js/jquery-3.5.1.min.js')}}"></script>
+    <!-- Bootstrap JS -->
+    <script src="{{asset('js/bootstrap.min.js')}}"></script>
+    <!-- IonRanger JS -->
+    <script src="{{asset('js/plugins/ion.rangeSlider.min.js')}}"></script>
+    <!-- SVG inject JS -->
+    <script src="{{asset('js/plugins/svg-inject.min.js')}}"></script>
+    <!-- Slick slider JS -->
+    <script src="{{asset('js/plugins/slick.min.js')}}"></script>
+    <!-- Plugins JS (Please remove the comment from below plugins.min.js for better website load performance and remove plugin js files from above) -->
+    <!--
+  <script src="assets/js/plugins/plugins.min.js"></script>
+-->
+    <!-- Main JS -->
+    <script src="{{asset('js/main.js')}}"></script>
+
+    <script src="https://js.stripe.com/v3/"></script>
+    <script type="text/javascript">
+
   // Create a Stripe client.
 window.onload=function(){
 var stripe = Stripe('pk_test_51HX8OSEJdvtfnGl3rcrbGeBmzTlr8CBEoMr9RsCAOJqW70oJifg2In4xEex6rp9ZjYsyfGgqCURGfdVfLKid5Bdl00iFW90nBg');
@@ -93,7 +214,7 @@ var style = {
     color: '#32325d',
     fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
     fontSmoothing: 'antialiased',
-    fontSize: '8px',
+    fontSize: '16px',
     '::placeholder': {
       color: '#aab7c4'
     }
@@ -128,7 +249,6 @@ form.addEventListener('submit', function(event) {
   var options={
     name:document.getElementById('name').value,
     address_line1:document.getElementById('address').value,
-    phone:document.getElementById('phone').value,
     address_zip:document.getElementById('postalcode').value
   }
 

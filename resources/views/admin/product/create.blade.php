@@ -17,10 +17,10 @@
                                 {!! Form::text('name',null,["class"=>"form-control",'placeholder'=>'name', 'required'])!!}
                             </div>
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-12">  
                             <div class="form-group">
                                 {!! Form::label('Description') !!}
-                                {!! Form::text('desc',null,["class"=>"form-control",'placeholder'=>'description', 'required'])!!}
+                                {!! Form::textarea('desc',null,["class"=>"form-control",'placeholder'=>'description', 'required'])!!}
                             </div>
                         </div>
                         <div class="col-md-12">
