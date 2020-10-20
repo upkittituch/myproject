@@ -2,20 +2,75 @@
 
 @section('content')
 
-    <article class="card">
+
+
+
+
+  
+    <!-- CSS
+		============================================ -->
+    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
+    <!-- Slick CSS -->
+    <link rel="stylesheet" href="{{asset('css/plugins/slick.min.css')}}">
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="{{asset('css/plugins/cssanimation.min.css')}}">
+    <!-- IonRange slider CSS -->
+    <link rel="stylesheet" href="{{asset('css/plugins/ion.rangeSlider.min.css')}}">
+    <!-- Vendor & Plugins CSS (Please remove the comment from below vendor.min.css & plugins.min.css for better website load performance and remove css files from above) -->
+    <!--
+			<link rel="stylesheet" href="assets/css/vendor.min.css">
+			<link rel="stylesheet" href="assets/css/plugins/plugins.min.css">
+			-->
+    <!-- Main Style CSS -->
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <header>
     
-        <div class="card-body">
+            <div class="header-wrapper border-bottom">
+                <div class="container space-y--15">
+                    <div class="row align-items-center">
+                        <div class="col-auto">
+                            <!-- header logo -->
+                            <div class="header-logo">
+                                <a href="index.html">
+                                    <img src="{{asset('img/logo.png')}}" class="img-fluid" alt="">
+                                    
+                                </a>
+                               
+                            </div>
+                        </div>
+                        <div class="col d-flex justify-content-center">
+                            <!-- header search -->
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </header>
+
+
+           
+  
+    
+       <body>
+           
+     
+        
         @foreach($carts as $cart)
         @foreach($inform as $informs)
-   
+        
+
             <h3>Order Number: {{$informs->id}}</h3>
-            <article class="card">
-                <div class="card-body row">
-                    <div class="col"> <strong>บริษัทที่จัดส่งสินค้า:</strong> <br> {{$informs->company}} </div>
+            <article class="card"><br><br>
+            
+                <div class="card-body row ">
+                    <div class="col"> <strong>บริษัทจัดส่ง:</strong> <br> {{$informs->company}} </div>
                     <div class="col"> <strong>ที่อยู่ที่จัดส่ง:</strong> <br> {{$informs->address}} <span>{{$informs->postalcode}} </span></div>
                     <div class="col"> <strong>Tracking #:</strong> <br> {{$informs->tracking_number}} </div>
                 </div>@endforeach
             </article>
+            <article class="card">
             <div class="track">
                 @if($informs->tracking == 'processed')
                   <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">กำลังนำเนินการ</span> </div>
@@ -32,38 +87,70 @@
                     <div class="step active"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text"> จัดส่งแล้ว </span> </div>
                 @endif
             </div>
-            <hr>
-            @foreach($cart->items as $item)
-           
-                <li class="col-md-4">
-                    <figure class="itemside mb-3">
-                        <div class="aside"><img src="{{Storage::url($item['image'])}}" width="100" height="100"></div>
-                        <figcaption class="info align-self-center">
-                            <td class="title">ชื่อสินค้า:{{$item['name']}}<br> </td> 
-                            <td>จำนวณ:{{$item['qty']}}</td>
-                            <td>ราคา:{{$item['price']}}</td>
-                            
-                        </figcaption>
-                    </figure>
-                </li>@endforeach
-                <hr> 
-                 
-               <div class="card-body row">
-        
-                    <div class="col"> <strong>ราคารวม: {{$cart->totalPrice}}  ฿</div>
- 						
-                   
-                    <a href="/orders" class="btn btn-warning" data-abc="true"> <i class="fa fa-chevron-left"></i> Back to orders</a>
-                </div>@endforeach
- 		
-           
-           
-        </div>
-        
-        
-        
-    </article>
+            <hr>@endforeach
+            </article>
+            <article class="card">
+            <div class="cart-product-area">
+  
+    @foreach($cart->items as $item)
+            <div class="cart-product border-bottom--medium">
+                <div class="cart-product__image">
+                    <a href="shop-product.html">
+                        <img src="{{Storage::url($item['image'])}}" style="height: 100px ;width: 100px" class="img-fluid" alt="">
+                    </a>
+                </div>
+                <div class="cart-product__content">
+                    <h3 class="title"><a href="shop-product.html">ชื่อสินค้า : {{$item['name']}}</a></h3>
+                    <div class="qty">
+                      
+                        <span class="discounted-price">จำนวณ : {{$item['qty']}}</span>
+                    </div>
+                    
+                    <div class="price">
+                      
+                        <span class="discounted-price">ราคาสินค้า :{{$item['price']}} </span>
+                    </div>
+                </div>
+                </div>
+                @endforeach
+
+            </div>  
+            </article>
+    </div>    <br><br><br>
+                
     
+    </body>
+    <footer>
+        
+        <div class="footer-nav-wrapper">
+            <a href="{{route('shop')}}" class="footer-nav-single">
+                <div class="menu-wrapper">
+                    <img src="{{asset('img/icons/home.svg')}}" class="injectable"  alt="">
+                    <span>Home</span>
+                </div>
+            </a>
+            
+            <a href="{{route('cart.show')}}" class="footer-nav-single">
+                <div class="menu-wrapper">
+                    ({{session()->has('cart')?session()->get('cart')->totalQty:'0'}})
+                    
+                    <img src="{{asset('/img/icons/cart.svg')}}" class="injectable" alt="">
+                    
+                    <span>Cart</span>
+                </div>
+            </a>
+            @if(Auth::check())
+            
+                  
+            <a href="{{route('order')}}" class="footer-nav-single">
+                <div class="menu-wrapper">
+                    <img src="{{asset('img/icons/profile.svg')}}" class="injectable" alt="">
+                    <span>Profile</span>
+                </div>
+            </a>
+            @endif
+        </div>
+    </footer>
 
 <style >
 @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
@@ -74,8 +161,8 @@ body {
 }
 
 
-
 .card {
+    
     position: relative;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -90,6 +177,7 @@ body {
     background-clip: border-box;
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 0.10rem
+    
 }
 
 .card-header:first-child {
@@ -214,6 +302,23 @@ p {
     border-radius: 1px
 }
 </style >
+<script src="{{asset('js/modernizr-2.8.3.min.js')}}"></script>
+    <!-- jQuery JS -->
+    <script src="{{asset('js/jquery-3.5.1.min.js')}}"></script>
+    <!-- Bootstrap JS -->
+    <script src="{{asset('js/bootstrap.min.js')}}"></script>
+    <!-- IonRanger JS -->
+    <script src="{{asset('js/plugins/ion.rangeSlider.min.js')}}"></script>
+    <!-- SVG inject JS -->
+    <script src="{{asset('js/plugins/svg-inject.min.js')}}"></script>
+    <!-- Slick slider JS -->
+    <script src="{{asset('js/plugins/slick.min.js')}}"></script>
+    <!-- Plugins JS (Please remove the comment from below plugins.min.js for better website load performance and remove plugin js files from above) -->
+    <!--
+  <script src="assets/js/plugins/plugins.min.js"></script>
+-->
+    <!-- Main JS -->
+    <script src="{{asset('js/main.js')}}"></script>
 <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
 <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js'></script>
 <link href='https://use.fontawesome.com/releases/v5.7.2/css/all.css'>
