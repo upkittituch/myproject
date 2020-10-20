@@ -110,3 +110,7 @@
         </div>
     </body>
 </html>
+<script src="https://static.line-scdn.net/liff/edge/versions/2.4.1/sdk.js"></script>
+<script>
+
+</script>

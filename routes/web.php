@@ -26,6 +26,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/shop/{id}','FrontendController@show')->name('product.view');
 Route::get('/category/{name}','FrontendController@filter')->name('product.filter');
 
+
 Route::get('/orders','CartController@order')->name('order')->middleware('auth');
 Route::get('/ordersuser/{userid}/{orderid}','CartController@orderuser')->name('user.view')->middleware('auth');
 Route::get('/checkout/{amount}','CartController@checkout')->name('cart.checkout');
@@ -34,7 +35,7 @@ Route::get('/addToCart/{product}','CartController@addToCart')->name('add.cart');
 Route::post('/products/{product}','CartController@updateCart')->name('cart.update');
 Route::post('/product/{product}','CartController@removeCart')->name('cart.remove');
 Route::get('/cart','CartController@showCart')->name('cart.show');
-Route::get('/tracking/{userid}/{orderid}','CartController@tracking')->name('user.tracking')->middleware('auth');
+Route::get('/tracking/{userid}/{orderid}','CartController@tracking')->name('user.tracking')->middleware('auth'); 
 
 
 

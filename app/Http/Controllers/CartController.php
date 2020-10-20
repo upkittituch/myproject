@@ -118,7 +118,7 @@ class CartController extends Controller
             session()->forget('cart');
             
             return redirect()->to('/shop');
-
+                
         }else{
             return redirect()->back();
         }
@@ -195,6 +195,15 @@ class CartController extends Controller
 
         });
         return view('trackinguser',compact('carts','inform'));
+       
+    }
+    public function frontSearch(Request $request){
+        $search= $request->get('search');
+      
+       
+        $orders = Product::where('name',$search)->orWhere('name',$search)->get();
+
+        return view('admin.order.index',['orders'=>$orders]);
        
     }
 }

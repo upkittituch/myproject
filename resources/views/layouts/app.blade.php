@@ -37,7 +37,8 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                <div class="body-wrapper bg-color--gradient space-pt--40 space-pb--60">
+                </div>
                 </a>
               
           

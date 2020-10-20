@@ -26,11 +26,9 @@ class FrontendController extends Controller
     public function filter($name,Request $request ){
         $category  = Category::where('name',$name)->first();
         $categoryId = $category->id;
-        
-        if($request->subcategory){
-            $products = $this->filterProducts($request);
+    
             
-        }elseif($request->min||$request->max){
+        if($request->min||$request->max){
             $products = $this->filterByPrice($request);
 
         }else{
@@ -39,6 +37,10 @@ class FrontendController extends Controller
             
            
 
+        return view('product',compact('products'));
+    }
+    public function filterName($name,Request $request ){
+        $products  = Product::where('name',$name)->first();
         return view('product',compact('products'));
     }
    
