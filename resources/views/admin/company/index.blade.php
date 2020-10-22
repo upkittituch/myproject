@@ -42,6 +42,7 @@
                         <form action="{{route('company.destroy',$row->id)}}"method="post">@csrf 
                         {{method_field('DELETE')}}
                         <input type="submit" value="delete"class="btn btn-danger" onclick=" return confirm('u want delete ? id {{$row->id}} {{$row->name}}') ">
+                        </form>
                         </td>
                       </tr>
                     

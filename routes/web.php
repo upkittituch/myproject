@@ -40,8 +40,6 @@ Route::get('/tracking/{userid}/{orderid}','CartController@tracking')->name('user
 
 
 Route::resource('company','CompanyController');
-Route::resource('category','CategoryController');
-Route::resource('product','ProductController');
 Route::get('/shop', 'FrontendController@index')->name('shop')->middleware('auth');
 
 

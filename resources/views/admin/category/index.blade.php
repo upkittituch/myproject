@@ -31,17 +31,19 @@
                       </tr>
                     </thead>
                     @if(count($category)>0)
-                    @foreach($category as $key=>$row)
+                    @foreach($category as $row)
                     <tbody>
                       <tr>
-                        <td>{{$key+1}}</td>
+                        <td>{{$row->id}}</td>
                         <td>{{$row->name}}</td>
 
                         <td><a href="{{route('category.edit',[$row->id])}}" class="btn btn-sm btn-primary">Edit</a></td>
                         <td>
-                        <form action="{{route('category.destroy',$row->id)}}"method="post">@csrf 
+    
+                        <form action="{{route('category.destroy',[$row->id])}}" method="post">@csrf  
                         {{method_field('DELETE')}}
                         <input type="submit" value="delete"class="btn btn-danger" onclick=" return confirm('u want delete ? id {{$row->id}} {{$row->name}}') ">
+                        </form>
                         </td>
                       </tr>
                     
