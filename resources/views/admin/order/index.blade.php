@@ -85,11 +85,7 @@
                        
                       </tr>
                       @endforeach
-                      <div class="row">
-                        <div class="col-12 text-center">
-                          
-                        </div>
-                      </div>
+                    
           </div>
                       @else
                       <td>No any orders to show</td>
@@ -103,7 +99,11 @@
                 <div class="card-footer"></div>
               </div>
             </div>
-            
+            <div class="row">
+                        <div class="col-12 text-center">
+                            {{$orders->links()}}
+                        </div>
+                      </div>
           <!--Row-->
         </div>
 

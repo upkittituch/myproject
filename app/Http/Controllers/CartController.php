@@ -100,7 +100,7 @@ class CartController extends Controller
         }else{
             $cart = null;
         } 
-        \Mail::to(auth()->user()->email)->send(new Sendmail($cart));
+     
 
       
 
@@ -117,7 +117,7 @@ class CartController extends Controller
 
             session()->forget('cart');
             
-            return redirect()->to('/shop');
+            return redirect()->to('/thankyou');
                 
         }else{
             return redirect()->back();

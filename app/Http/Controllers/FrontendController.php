@@ -43,6 +43,9 @@ class FrontendController extends Controller
         $products  = Product::where('name',$name)->first();
         return view('product',compact('products'));
     }
+    public function thankyou(){
+        return view ('thankyou');
+    }
    
    
     

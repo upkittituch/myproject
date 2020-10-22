@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
         ]);
         Category::create([
             'id'=>'1',
-            'name'=>'shirt'
+            'name'=>'coffee'
         ]);
         Category::create([
             'id'=>'2',
@@ -133,36 +133,36 @@ class DatabaseSeeder extends Seeder
         
 
         User::create([
-        	'name'=>'Kittituch',
-        	'email'=>'admin@gmail.com',
+        	'name'=>'admin',
+        	'email'=>'up.ktt1996@gmail.com',
         	'password'=>bcrypt('123456789'),
         	'email_verified_at'=>NOW(),
         	'is_admin'=>1
         ]);
         User::create([
-        	'name'=>'usertest1',
-        	'email'=>'test1@gmail.com',
+        	'name'=>'Kittituch manisarangkul 1',
+        	'email'=>'upktt.rom6@gmail.com',
         	'password'=>bcrypt('123456789'),
         	'email_verified_at'=>NOW(),
         	'is_admin'=>0
         ]);
         User::create([
-        	'name'=>'usertest2',
-        	'email'=>'test2@gmail.com',
+        	'name'=>'Kittituch manisarangkul 2',
+        	'email'=>'upktt.rom8@gmail.com',
         	'password'=>bcrypt('123456789'),
         	'email_verified_at'=>NOW(),
         	'is_admin'=>0
         ]);
         User::create([
-        	'name'=>'usertest3',
-        	'email'=>'test3@gmail.com',
+        	'name'=>'Kittituch manisarangkul 3',
+        	'email'=>'',
         	'password'=>bcrypt('123456789'),
         	'email_verified_at'=>NOW(),
         	'is_admin'=>0
         ]);
         User::create([
-        	'name'=>'usertest4',
-        	'email'=>'test4@gmail.com',
+        	'name'=>'Kittituch manisarangkul 4',
+        	'email'=>'upgamer@outlook.co.th',
         	'password'=>bcrypt('123456789'),
         	'email_verified_at'=>NOW(),
         	'is_admin'=>0

@@ -40,6 +40,19 @@
                     <div class="col-6">
                         <h1 class="page-title text-center">order</h1>
                     </div>
+                    <div class="col-3">
+                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                             <i class="fas fa-sign-out-alt"></i>
+                                                Logout
+
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                    </div>
                 </div>
             </div>
         </div>

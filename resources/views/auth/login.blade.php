@@ -82,6 +82,9 @@
                                 <div class="auth-form__single-field space-mb--40">
                                     <a class="auth-form__info-text" href="{{ route('password.request') }}">{{ __('Forgot Your Password?') }}</a>
                                 </div>
+                                <div class="auth-form__single-field space-mb--40">
+                                    <a class="auth-form__info-text" href="{{ route('register') }}">{{ __('Not a member ? sings up now') }}</a>
+                                </div>
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
                                         

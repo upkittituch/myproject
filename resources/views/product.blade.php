@@ -13,7 +13,7 @@
 
      
 
-
+   <script src="https://static.line-scdn.net/liff/edge/versions/2.4.1/sdk.js"></script>
 <link rel="icon" href="{{asset('img/favicon.ico')}}">
     <!-- CSS
 		============================================ -->
@@ -66,7 +66,7 @@
                         <div class="col-auto">
                             <!-- header logo -->
                             <div class="header-logo">
-                                <a href="index.html">
+                                <a href="{{route('shop')}}">
                                     <img src="{{asset('img/logo.png')}}" class="img-fluid" alt="">
                                     
                                 </a>
@@ -79,9 +79,9 @@
                             <!-- header search -->
                             <div class="header-search">
                                 <form>
-                                    <input type="text" id="header-search-input" placeholder="Search anything">
+                                    <input type="text" id="header-search-input" placeholder="Search With Keyword">
                                     <img src="{{asset('img/icons/search.svg')}}" class="injectable" alt="">
-                                    <button class="btn btn-info" >search</button>
+                                   
                                 </form>
                             </div>
                         </div>
@@ -92,7 +92,7 @@
             
             <div class="search-keyword-area space-xy--15 bg-color--grey2" id="search-keyword-box">
                 <div class="search-keyword-header space-mb--20">
-                    <h4 class="search-keyword-header__title">Hot Keywords</h4>
+                    <h4 class="search-keyword-header__title">Keywords</h4>
                    
                 </div>
                 
@@ -333,7 +333,9 @@ div.img-resize {
 	text-align: center;
 }
 </style>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js?time=999"></script>
 <script type="text/javascript">
      $("document").ready(function(){
      $(".addToCart").click(function(e){
@@ -358,5 +360,6 @@ div.img-resize {
 
 
     });
+    
 </script>
 @endsection

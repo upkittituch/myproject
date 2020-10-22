@@ -2,7 +2,7 @@
 
 @section('content')
 
-<script src="https://static.line-scdn.net/liff/edge/versions/2.3.0/sdk.js"></script>
+
 
 <meta charset="utf-8">
   <!-- Bootstrap CSS -->
@@ -60,7 +60,8 @@
                             <form method="POST" action="{{ route('register') }}"> @csrf
                                 <div class="auth-form__single-field space-mb--30">
                                     <label for="name">Name</label>
-                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name"  required autocomplete="name" autofocus>
+                                    <input id="displayName" type="text" class="form-control @error('name') is-invalid @enderror"   name="name"   
+                                    required autocomplete="name" autofocus>
                                     @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -69,7 +70,7 @@
                                 </div>
                                 <div class="auth-form__single-field space-mb--30">
                                     <label for="email">E-Mail</label>
-                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email"  required autocomplete="email">
+                                    <input id="getDecodedIDToken" type="email" class="form-control @error('email') is-invalid @enderror" name="email"  required autocomplete="email">
                                     @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -94,15 +95,45 @@
                                     <p class="auth-form__info-text">Already have an account? <a href="login.html">Sign in Now</a></p>
                                 </div>
                                 <button class="auth-form__button" type="submit">Register'</button>
+                             
+                               
+  <p id="userId"></p>
+  <p id="displayName"></p>
+  <p id="statusMessage"></p>
+  <p id="getDecodedIDToken"></p>
 
-                                <img id="pictureUrl" width="25%">
+                                
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <script src="https://static.line-scdn.net/liff/edge/versions/2.4.1/sdk.js"></script>
+        <script>
+    function runApp() {
+      liff.getProfile().then(profile => {
+        
+        document.getElementById("userId").value = '<b>UserId:</b> ' + profile.userId;
+        document.getElementById("displayName").value = profile.displayName;
+        document.getElementById("statusMessage").value = '<b>StatusMessage:</b> ' + profile.statusMessage;
+        document.getElementById("getDecodedIDToken").value = liff.getDecodedIDToken().email;
+        console.log.getProfile();
+      }).catch(err => console.error(err));
+    }
+    liff.init({ liffId: "1655117134-YzkaMnxg" }, () => {
+      if (liff.isLoggedIn()) {
+        runApp()
+      } else {
+        liff.login();
+      }
+    }, err => console.error(err.code, error.message));
 
+    function myFunction() {
+    var x = document.getElementById("myBtn").innerText;
+    document.getElementById("demo").innerHTML = x;  
+}
+  </script>
 
 
    
