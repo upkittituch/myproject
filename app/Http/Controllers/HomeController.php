@@ -29,7 +29,7 @@ class HomeController extends Controller
         if(auth()->user()->is_admin==1){
 
             
-            $user = User::get();   
+            $user = User::paginate(6);   
             return view('admin/dashboard',compact('user'));
 
            }else{

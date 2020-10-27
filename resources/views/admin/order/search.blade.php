@@ -21,8 +21,8 @@
                   <form action="{{route('order.search')}}" method ="get">
                   
                     <div class="form-group">
-                      <label for="">ค้นหา id user</label>
-                      <input type="search"  name="search" id="search" placeholder="ตัวอย่าง : 123" >
+                    <label >ค้นหา</label>
+                      <input type="search"  name="search" id="search"placeholder=" id หรือ name"   >
                       <span class="form-group-btn"> 
                       <button type="submit" class="btn btn-info" >ค้นหา</button>
                       </span>
@@ -81,7 +81,11 @@
                 <div class="card-footer"></div>
               </div>
             </div>
-            
+            <div class="row">
+                        <div class="col-12 text-center">
+                            {{$orders->links()}}
+                        </div>
+                      </div>
           <!--Row-->
         </div>
 

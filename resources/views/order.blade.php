@@ -9,7 +9,7 @@
                             <!-- header logo -->
                             <div class="header-logo">
                                 <a href="index.html">
-                                    <img src="{{asset('img/logo.png')}}" class="img-fluid" alt="">
+                                <img src="{{asset('admin/img/logo/LogoMakr2.png')}}" class="img-fluid" alt="" width="50" height="50">
                                     
                                 </a>
                                

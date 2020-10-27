@@ -24,7 +24,7 @@
     <script src="https://static.line-scdn.net/liff/edge/versions/2.4.1/sdk.js"></script>
     
     <!-- Css Styles -->
-  
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
    
     
     <!-- Styles -->

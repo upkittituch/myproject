@@ -2,7 +2,7 @@
 @section('content')
 {{ csrf_field() }}
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-  <h1 class="h3 mb-0 ml-4 text-gray-800">Product</h1>
+  <h1 class="h3 mb-0 ml-4 text-gray-800">Category</h1>
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
     <li class="breadcrumb-item active" aria-current="page">Category</li>
@@ -10,7 +10,7 @@
 </div>
 <div class="container-fluid" id="container-wrapper">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Category Tables</h1>
+         
           </div>
 
           <div class="row">
@@ -25,6 +25,7 @@
                     <thead class="thead-light">
                       <tr>
                         <th>number</th>
+                        <th>image</th>
                         <th>name</th>
                         <th>Action</th>
                         <th></th>
@@ -35,6 +36,9 @@
                     <tbody>
                       <tr>
                         <td>{{$row->id}}</td>
+                        <td>
+                          <img src="{{Storage::url($row->image)}}" width="25"  height="25" >
+                        </td>
                         <td>{{$row->name}}</td>
 
                         <td><a href="{{route('category.edit',[$row->id])}}" class="btn btn-sm btn-primary">Edit</a></td>

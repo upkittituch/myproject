@@ -22,6 +22,7 @@
 			-->
     <!-- Main Style CSS -->
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <div class="body-wrapper bg-color--gradient space-pt--40 space-pb--120">
     <header>
             <div class="header-wrapper border-bottom">
                 <div class="container space-y--15">
@@ -30,7 +31,7 @@
                             <!-- header logo -->
                             <div class="header-logo">
                                 <a href="index.html">
-                                    <img src="{{asset('img/logo.png')}}" class="img-fluid" alt="">
+                                <img src="{{asset('admin/img/logo/LogoMakr2.png')}}" class="img-fluid" alt="" width="50" height="50">
                                     
                                 </a>
                                
@@ -47,7 +48,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+                </div></div>
             <!-- search keywords --> 
         </header>
 

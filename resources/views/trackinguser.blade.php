@@ -6,12 +6,12 @@
 
 
 
-  
+
     <!-- CSS
 		============================================ -->
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
     <!-- FontAwesome CSS -->
-    <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}" type='text/css'>
     <!-- Slick CSS -->
     <link rel="stylesheet" href="{{asset('css/plugins/slick.min.css')}}">
     <!-- Animate CSS -->
@@ -34,7 +34,7 @@
                             <!-- header logo -->
                             <div class="header-logo">
                                 <a href="index.html">
-                                    <img src="{{asset('img/logo.png')}}" class="img-fluid" alt="">
+                                <img src="{{asset('admin/img/logo/LogoMakr2.png')}}" class="img-fluid" alt="" width="50" height="50">
                                     
                                 </a>
                                
@@ -73,18 +73,18 @@
             <article class="card">
             <div class="track">
                 @if($informs->tracking == 'processed')
-                  <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">กำลังนำเนินการ</span> </div>
-                  <div class="step"> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text"> จัดเตรียมสินค้า</span> </div>
-                  <div class="step"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text"> จัดส่งแล้ว </span> </div>
+                  <div class="step active"> <span class="icon"> <i class="fas fa-check"></i> </span> <span class="text">กำลังนำเนินการ</span> </div>
+                  <div class="step"> <span class="icon"> <i class="fas fa-user"></i> </span> <span class="text"> จัดเตรียมสินค้า</span> </div>
+                  <div class="step"> <span class="icon"> <i class="fas fa-truck"></i> </span> <span class="text"> จัดส่งแล้ว </span> </div>
                   
                 @elseif ($informs->tracking=='packing')
-                    <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">กำลังนำเนินการ</span> </div>
-                  <div class="step active" > <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text"> จัดเตรียมสินค้า</span> </div>
-                  <div class="step"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text"> จัดส่งแล้ว </span> </div>
+                    <div class="step active"> <span class="icon"> <i class="fas fa-check"></i> </span> <span class="text">กำลังนำเนินการ</span> </div>
+                  <div class="step active" > <span class="icon"> <i class="fas fa-user"></i> </span> <span class="text"> จัดเตรียมสินค้า</span> </div>
+                  <div class="step"> <span class="icon"> <i class="fas fa-truck"></i> </span> <span class="text"> จัดส่งแล้ว </span> </div>
                 @elseif ($informs->tracking=='delivered')
-                    <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">กำลังนำเนินการ</span> </div>
-                    <div class="step active"> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text"> จัดเตรียมสินค้า</span> </div>
-                    <div class="step active"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text"> จัดส่งแล้ว </span> </div>
+                    <div class="step active"> <span class="icon"> <i class="fas fa-check"></i> </span> <span class="text">กำลังนำเนินการ</span> </div>
+                    <div class="step active"> <span class="icon"> <i class="fas fa-user"></i> </span> <span class="text"> จัดเตรียมสินค้า</span> </div>
+                    <div class="step active"> <span class="icon"> <i class="fas fa-truck"></i> </span> <span class="text"> จัดส่งแล้ว </span> </div>
                 @endif
             </div>
             <hr>@endforeach

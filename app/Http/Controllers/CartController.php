@@ -170,7 +170,7 @@ class CartController extends Controller
         $search= $request->get('search');
       
        
-        $orders = Order::with('user')->where('user_id',$search)->orWhere('name',$search)->get();
+        $orders = Order::with('user')->where('user_id',$search)->orWhere('name',$search)->paginate(8);
 
         return view('admin.order.index',['orders'=>$orders]);
        

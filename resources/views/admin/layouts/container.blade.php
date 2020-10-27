@@ -17,8 +17,7 @@
                       <div class="text-xs font-weight-bold text-uppercase mb-1">product </div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">{{App\Product::get()->count()}}</div>
                       <div class="mt-2 mb-0 text-muted text-xs">
-                        <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-                        <span>Since last month</span>
+                       
                       </div>
                     </div>
                     <div class="col-auto">
@@ -37,8 +36,7 @@
                       <div class="text-xs font-weight-bold text-uppercase mb-1">order</div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">{{App\Order::get()->count()}}</div>
                       <div class="mt-2 mb-0 text-muted text-xs">
-                        <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 12%</span>
-                        <span>Since last years</span>
+                        
                       </div>
                     </div>
                     <div class="col-auto">
@@ -59,8 +57,7 @@
                       <div class="text-xs font-weight-bold text-uppercase mb-1">User</div>
                       <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{App\User::get()->count()}}</div>
                       <div class="mt-2 mb-0 text-muted text-xs">
-                        <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 20.4%</span>
-                        <span>Since last month</span>
+                        
                       </div>
                     </div>
                     <div class="col-auto">
@@ -71,7 +68,7 @@
               </div>
             </div>
             
-
+            
             
             
            
@@ -79,74 +76,36 @@
             <div class="col-xl-12 col-lg-7 mb-4">
               <div class="card">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Invoice</h6>
-                  <a class="m-0 float-right btn btn-danger btn-sm" href="#">View More <i
-                      class="fas fa-chevron-right"></i></a>
+                  <h6 class="m-0 font-weight-bold text-primary">User</h6>
+                  {{$user->links()}}
+                  
+                  
                 </div>
                 <div class="table-responsive">
+                
                   <table class="table align-items-center table-flush">
                     <thead class="thead-light">
                       <tr>
-                        <th>Order ID</th>
-                        <th>Customer</th>
-                        <th>Item</th>
-                        <th>Status</th>
-                        <th>Action</th>
+                        <th>id</th>
+                        <th>name</th>
+                        <th>e-mail</th>
                       </tr>
                     </thead>
+                    @foreach($user as $users)
                     <tbody>
                       <tr>
-                        <td><a href="#">RA0449</a></td>
-                        <td>Udin Wayang</td>
-                        <td>Nasi Padang</td>
-                        <td><span class="badge badge-success">Delivered</span></td>
-                        <td><a href="#" class="btn btn-sm btn-primary">Detail</a></td>
-                      </tr>
-                      <tr>
-                        <td><a href="#">RA5324</a></td>
-                        <td>Jaenab Bajigur</td>
-                        <td>Gundam 90' Edition</td>
-                        <td><span class="badge badge-warning">Shipping</span></td>
-                        <td><a href="#" class="btn btn-sm btn-primary">Detail</a></td>
-                      </tr>
-                      <tr>
-                        <td><a href="#">RA8568</a></td>
-                        <td>Rivat Mahesa</td>
-                        <td>Oblong T-Shirt</td>
-                        <td><span class="badge badge-danger">Pending</span></td>
-                        <td><a href="#" class="btn btn-sm btn-primary">Detail</a></td>
-                      </tr>
-                      <tr>
-                        <td><a href="#">RA1453</a></td>
-                        <td>Indri Junanda</td>
-                        <td>Hat Rounded</td>
-                        <td><span class="badge badge-info">Processing</span></td>
-                        <td><a href="#" class="btn btn-sm btn-primary">Detail</a></td>
-                      </tr>
-                      <tr>
-                        <td><a href="#">RA1353</a></td>
-                        <td>up Junanda</td>
-                        <td>Hat dss</td>
-                        <td><span class="badge badge-info">Processing</span></td>
-                        <td><a href="#" class="btn btn-sm btn-primary">Detail</a></td>
-                      </tr>
-                      <tr>
-                        <td><a href="#">RA9453</a></td>
-                        <td>ktt Junanda</td>
-                        <td>lnwza Rounded</td>
-                        <td><span class="badge badge-info">Processing</span></td>
-                        <td><a href="#" class="btn btn-sm btn-primary">Detail</a></td>
-                      </tr>
-                      <tr>
-                        <td><a href="#">RA1998</a></td>
-                        <td>Udin Cilok</td>
-                        <td>Baby Powder</td>
-                        <td><span class="badge badge-success">Delivered</span></td>
-                        <td><a href="#" class="btn btn-sm btn-primary">Detail</a></td>
+                        <td><a href="#">{{$users->id}}</a></td>
+                        <td>{{$users->name}}</td>
+                        <td>{{$users->email}}</td>
+
                       </tr>
                     </tbody>
+                    @endforeach
                   </table>
+                 
+
                 </div>
+                
                 <div class="card-footer"></div>
               </div>
             </div>      

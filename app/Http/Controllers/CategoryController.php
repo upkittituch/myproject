@@ -39,17 +39,20 @@ class CategoryController extends Controller
     {
         $this->validate($request,[
             'name'=>'required',
+            'image'=>'required|mimes:svg',
             
         ]);
+        $image = $request->file('image')->store('public/category');
+
+        Category::create([
+
+         'name'=>$request->name,
+         'image'=>$image
      
-        $category = new Category();
-        $category->name=$request->input('name');
-        $category->save();
-        return redirect()->route('category.index');
-       
-
-
-
+    
+         ]);
+         return redirect()->route('category.index');
+        
 
     }
 
@@ -86,8 +89,17 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $category = Category::find($id);
-        $category->name= $request->name;
+        $filename = $category->image;
+        if($request->file('image')){
+            $image = $request->file('image')->store('public/category');
+            \Storage::delete($filename);
+        $category->name = $request->name;
+        $category->image = $image;
         $category->save();
+       }else{
+        $category->name = $request->name;
+        $category->save();
+       }
         return redirect()->route('category.index');
     }
 

@@ -16,13 +16,14 @@
                                 {!! Form::label('name') !!}
                                 {!! Form::text('name',null,["class"=>"form-control" ,'placeholder'=>'name', 'required'])!!}
                             </div>
-                            <div class="col-md-12">
-                            <div class="form-group">
-                                {!! Form::label('image upload') !!}
-                                {!! Form::file('image') !!}
-
-                            </div>
                         </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    {!! Form::label('image upload') !!}
+                                    {!! Form::file('image') !!}
+
+                                </div>
+                             </div>
                             <input type="submit" value="save" class="btn btn-primary">
                             <a href="{{URL::previous()}}" class="btn btn-success">back</a>
                         </div>

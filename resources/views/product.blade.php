@@ -67,7 +67,7 @@
                             <!-- header logo -->
                             <div class="header-logo">
                                 <a href="{{route('shop')}}">
-                                    <img src="{{asset('img/logo.png')}}" class="img-fluid" alt="">
+                                <img src="{{asset('admin/img/logo/LogoMakr2.png')}}" class="img-fluid" alt="" width="50" height="50">
                                     
                                 </a>
                                 @include('notify::messages')
@@ -118,42 +118,42 @@
                     <div class="col-12">
                     
                         <div class="hero-slider-wrapper">
-                            <div class="hero-slider-item d-flex bg-img" data-bg="assets/img/hero-slider/slider-1.jpg">
+                            <div class="hero-slider-item d-flex bg-img" data-bg="{{asset('admin/img/sl1.jpg')}} " width="250" height="233">
                                 <div class="container">
                                
                                     <div class="row">
                                         <div class="col-12">
                                             <!-- hero slider content -->
                                             <div class="hero-slider-content">
-                                                <h1 class="hero-slider-content__title space-mb--10">Most popular <br> Hand Bag</h1>
-                                                <p class="hero-slider-content__text">GET 30% OFF</p>
+                                                <h1 class="hero-slider-content__title space-mb--10">Most popular <br> Coffee</h1>
+                                                <p class="hero-slider-content__text">Order Now</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="hero-slider-item d-flex bg-img" data-bg="assets/img/hero-slider/slider-2.jpg">
+                            <div class="hero-slider-item d-flex bg-img" data-bg="{{asset('admin/img/sl2.jpg')}} " width="250" height="233">
                                 <div class="container">
                                  
                                     <div class="row">
                                         <div class="col-12">
                                             <!-- hero slider content -->
                                             <div class="hero-slider-content">
-                                                <h1 class="hero-slider-content__title space-mb--10">New Arrival <br> Sport Shoes</h1>
-                                                <p class="hero-slider-content__text">GET 40% OFF</p>
+                                                <h1 class="hero-slider-content__title space-mb--10">Organic <br> Coffee</h1>
+                                                <p class="hero-slider-content__text">In Shop</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="hero-slider-item d-flex bg-img" data-bg="assets/img/hero-slider/slider-3.jpg">
+                            <div class="hero-slider-item d-flex bg-img" data-bg="{{asset('admin/img/sl3.jpg')}} " width="250" height="233">
                                 <div class="container">
                                     <div class="row">
                                         <div class="col-12">
                                             <!-- hero slider content -->
                                             <div class="hero-slider-content">
-                                                <h1 class="hero-slider-content__title space-mb--10">Featured Product <br> Summer Clothes</h1>
-                                                <p class="hero-slider-content__text">GET 50% OFF</p>
+                                                <h1 class="hero-slider-content__title space-mb--10">Fast delivery <br></h1>
+                                                <p class="hero-slider-content__text">Free delivery</p>
                                             </div>
                                         </div>
                                     </div>
@@ -191,7 +191,7 @@
                             <div class="category-item">
                                 <div class="category-item__image">
                                     <a href="{{route('product.filter',[$cat->name])}}">
-                                        <img src="{{asset('img/icons/category/cat1.svg')}}" class="injectable" alt="">
+                                        <img src="{{asset('img/icons/coffee-beans.svg')}}" class="injectable" alt="" width="25" height="25">
                                     </a>
                                 </div>
                                 <div class="category-item__title">

@@ -32,7 +32,7 @@
                       @foreach($products as $product)
                       <tr>
                         <td>
-                          <img src="{{Storage::url($product->image)}}" width="140"  height="180" >
+                          <img src="{{Storage::url($product->image)}}" width="120"  height="180" >
                         </td>
                         <td>{{$product->name}}</td>
                         <td>{{$product->desc}}</td>
@@ -53,11 +53,14 @@
                       </tr>
                       @endforeach
                       <div class="row">
+                      @if(count($products)>8)
                         <div class="col-12 text-center">
-                          {{$products->links()}}
+                        {{$products->links()}}
                         </div>
+                      @endif
                       </div>
                       @else
+                      
                       <td>No any product</td>
                       @endif
                     
