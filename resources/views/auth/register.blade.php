@@ -130,10 +130,7 @@
       }
     }, err => console.error(err.code, error.message));
 
-    function myFunction() {
-    var x = document.getElementById("myBtn").innerText;
-    document.getElementById("demo").innerHTML = x;  
-}
+  
   </script>
 
 

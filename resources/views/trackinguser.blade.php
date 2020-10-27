@@ -95,12 +95,12 @@
     @foreach($cart->items as $item)
             <div class="cart-product border-bottom--medium">
                 <div class="cart-product__image">
-                    <a href="shop-product.html">
+                    
                         <img src="{{Storage::url($item['image'])}}" style="height: 100px ;width: 100px" class="img-fluid" alt="">
-                    </a>
+                    
                 </div>
                 <div class="cart-product__content">
-                    <h3 class="title"><a href="shop-product.html">ชื่อสินค้า : {{$item['name']}}</a></h3>
+                    <h3 class="title"><a >ชื่อสินค้า : {{$item['name']}}</a></h3>
                     <div class="qty">
                       
                         <span class="discounted-price">จำนวณ : {{$item['qty']}}</span>

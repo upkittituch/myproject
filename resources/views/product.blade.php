@@ -180,7 +180,7 @@
                         
                                 <div class="category-item__image">
                                     <a href="{{route('shop')}}">
-                                        <img src="{{asset('img/icons/category/cat2.svg')}}" class="injectable" alt="">
+                                        <img src="{{asset('img/icons/category/market.svg')}}" class="injectable" alt="" width="25" height="25">
                                     </a>
                                 </div>
                                 <div class="category-item__title">
@@ -191,7 +191,7 @@
                             <div class="category-item">
                                 <div class="category-item__image">
                                     <a href="{{route('product.filter',[$cat->name])}}">
-                                        <img src="{{asset('img/icons/coffee-beans.svg')}}" class="injectable" alt="" width="25" height="25">
+                                        <img src="{{Storage::url($cat->image)}}" class="injectable" alt="" width="25" height="25">
                                     </a>
                                 </div>
                                 <div class="category-item__title">
@@ -323,7 +323,7 @@
 <style type="text/css">
 div.img-resize img {
 	width: 150px;
-	height: auto;
+	height: 150px;
 }
 
 div.img-resize {
