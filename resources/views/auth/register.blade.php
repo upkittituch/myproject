@@ -70,6 +70,9 @@
                                 @enderror
                                 </div>
                                 <div class="auth-form__single-field space-mb--30">
+                                <input type="hidden" id="userId" name="userId"  class="form-control">
+                                </div>
+                                <div class="auth-form__single-field space-mb--30">
                                     <label for="email">E-Mail</label>
                                     <input id="getDecodedIDToken" type="email" class="form-control @error('email') is-invalid @enderror" name="email"  required autocomplete="email">
                                     @error('email')
@@ -78,6 +81,7 @@
                                     </span>
                                     @enderror
                                 </div>
+                                
                                 <div class="auth-form__single-field space-mb--30">
                                     <label for="password">Password</label>
                                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
@@ -115,7 +119,7 @@
     function runApp() {
       liff.getProfile().then(profile => {
         
-        document.getElementById("userId").value = '<b>UserId:</b> ' + profile.userId;
+        document.getElementById("userId").value =profile.userId;
         document.getElementById("displayName").value = profile.displayName;
         document.getElementById("statusMessage").value = '<b>StatusMessage:</b> ' + profile.statusMessage;
         document.getElementById("getDecodedIDToken").value = liff.getDecodedIDToken().email;

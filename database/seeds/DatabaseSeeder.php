@@ -28,34 +28,12 @@ class DatabaseSeeder extends Seeder
             'company_name'=>'DHL'
         ]);
         User::create([
-        	'name'=>'admin',
+            'name'=>'admin',
+            'userId'=>'admin',
         	'email'=>'admin@gmail.com',
         	'password'=>bcrypt('123456789'),
         	'is_admin'=>1
         ]);
-        User::create([
-        	'name'=>'Kittituch manisarangkul 1',
-        	'email'=>'test1@gmail.com',
-        	'password'=>bcrypt('123456789'),
-        	'is_admin'=>0
-        ]);
-        User::create([
-        	'name'=>'Kittituch manisarangkul 2',
-        	'email'=>'test2@gmail.com',
-        	'password'=>bcrypt('123456789'),
-        	'is_admin'=>0
-        ]);
-        User::create([
-        	'name'=>'Kittituch manisarangkul 3',
-        	'email'=>'test3@gmail.com',
-        	'password'=>bcrypt('123456789'),
-        	'is_admin'=>0
-        ]);
-        User::create([
-        	'name'=>'Kittituch manisarangkul 4',
-        	'email'=>'test4@outlook.co.th',
-        	'password'=>bcrypt('123456789'),
-        	'is_admin'=>0
-        ]);
+     
     }
 }
