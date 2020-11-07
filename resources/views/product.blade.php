@@ -2,23 +2,15 @@
 
 @section('content')
 
- <!-- <div class="contrainer">
-  <main role="main">
-    <div class="container">
-    <h2>Category</h2>
-      @foreach(App\Category::all() as $cat)
-          <a href="{{route('product.filter',[$cat->name])}}"> <button class="btn btn-secondary">{{$cat->name}}</button></a>
-      @endforeach 
-   -->
 
      
 
-   <script src="https://static.line-scdn.net/liff/edge/versions/2.4.1/sdk.js"></script>
+   <script src="https://static.line-scdn.net/liff/edge/versions/2.5.0/sdk.js"></script>
 <link rel="icon" href="{{asset('img/favicon.ico')}}">
     <!-- CSS
 		============================================ -->
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css?')}}">
     <!-- FontAwesome CSS -->
     <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
     <!-- Slick CSS -->
@@ -362,4 +354,12 @@ div.img-resize {
     });
     
 </script>
+<script>
+
+
+</script>
+    <!-- Integrating the LIFF SDK -->
+
+
+
 @endsection

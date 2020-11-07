@@ -44,6 +44,7 @@ class FrontendController extends Controller
         return view('product',compact('products'));
     }
     public function thankyou(){
+        
         return view ('thankyou');
     }
    

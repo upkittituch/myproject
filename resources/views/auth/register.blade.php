@@ -116,6 +116,14 @@
         </div>
         <script src="https://static.line-scdn.net/liff/edge/versions/2.4.1/sdk.js"></script>
         <script>
+   
+    liff.init({ liffId: "1655117134-YzkaMnxg" }, () => {
+      if (liff.isLoggedIn()) {
+        runApp()
+      } else {
+        liff.login();
+      }
+    }, err => console.error(err.code, error.message));
     function runApp() {
       liff.getProfile().then(profile => {
         
@@ -126,13 +134,7 @@
         console.log.getProfile();
       }).catch(err => console.error(err));
     }
-    liff.init({ liffId: "1655117134-YzkaMnxg" }, () => {
-      if (liff.isLoggedIn()) {
-        runApp()
-      } else {
-        liff.login();
-      }
-    }, err => console.error(err.code, error.message));
+
 
   
   </script>
