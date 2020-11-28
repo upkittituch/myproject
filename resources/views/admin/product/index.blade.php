@@ -47,7 +47,6 @@
                            <form action="{{route('product.destroy',[$product->id])}}" method="POST" onsubmit="return confirmDelete()">@csrf
                             {{method_field('DELETE')}}
                             <button type="submit" class="btn btn-sm btn-danger" >Delete</button>
-                            
                           </form>
                         </td>
                       </tr>
@@ -59,12 +58,9 @@
                         </div>
                       @endif
                       </div>
-                      @else
-                      
+                      @else                     
                       <td>No any product</td>
                       @endif
-                    
-
                     </tbody>
                   </table>
                 </div>

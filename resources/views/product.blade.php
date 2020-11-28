@@ -284,6 +284,12 @@
                     </div>
                 </a>
                 @endif
+                <a href="{{route('address.index')}}" class="footer-nav-single">
+                    <div class="menu-wrapper">
+                        <img src="{{asset('img/icons/list.svg')}}" class="injectable" alt="">
+                        <span>Address</span>
+                    </div>
+                </a>
             </div>
         </footer>
                       
@@ -352,13 +358,34 @@ div.img-resize {
 
 
     });
-    
-</script>
-<script>
+const LINE_MESSAGING_API = "https://api.line.me/v2/bot/message";
+const LINE_HEADER = {
+  "Content-Type": "application/json",
+  "Authorization": "Bearer <CHANNEL-ACCESS-TOKEN>"
+};
 
+exports.BasicMessage = functions.https.onRequest((req, res) => {
+  return request({
+    method: "POST",
+    uri: `${LINE_MESSAGING_API}/push`,
+    headers: LINE_HEADER,
+    body: JSON.stringify({
+      to: "",
+      messages: [{
+        type: "sticker",
+        packageId: 11537,
+        stickerId: 52002744
+      }]
+    })
+  }).then(() => {
+      return res.status(200).send("Done");
+  }).catch(error => {
+      return Promise.reject(error);
+  });
+});
 
 </script>
-    <!-- Integrating the LIFF SDK -->
+
 
 
 

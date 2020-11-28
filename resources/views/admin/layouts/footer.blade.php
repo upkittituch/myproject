@@ -2,11 +2,13 @@
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
             <span>copyright &copy; 2020 - developed by
-              <b><a href="https://indrijunanda.gitlab.io/" target="_blank">kittituch</a></b>
+              <b><a href="https://github.com/upkittituch/myproject" target="_blank">kittituch</a></b>
             </span>
           </div>
         </div>
-      </footer>
+        
+        
+</footer>
       
   <script src="{{asset('admin/vendor/jquery/jquery.min.js')}}"></script>
   <script src="{{asset('admin/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>

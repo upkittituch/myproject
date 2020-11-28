@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<script src="https://static.line-scdn.net/liff/edge/versions/2.4.1/sdk.js"></script>
+<script src="https://static.line-scdn.net/liff/edge/versions/2.5.0/sdk.js"></script>
 
 <meta charset="utf-8">
   <!-- Bootstrap CSS -->
@@ -63,7 +63,7 @@
                             <form action="index.html">
                                 <div class="auth-form__single-field space-mb--30">
                                     <label for="email">{{ __('E-Mail Address') }}</label>
-                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                    <input id="getDecodedIDToken" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                                     @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -99,9 +99,13 @@
             </div>
         </div>
         </form>
+   
 
 
+  
+  </script>
 </body>
+
 
 
 

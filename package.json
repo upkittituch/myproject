@@ -24,6 +24,7 @@
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.15.1",
         "@line/liff": "^2.4.1",
-        "@popperjs/core": "^2.5.3"
+        "@popperjs/core": "^2.5.3",
+        "messaging-api-line": "^1.0.1"
     }
 }

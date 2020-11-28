@@ -59,28 +59,33 @@
         
         @foreach($carts as $cart)
         @foreach($inform as $informs)
-        
+        @foreach($up as $item)
 
             <h3>Order Number: {{$informs->id}}</h3>
             <article class="card"><br><br>
             
                 <div class="card-body row ">
                     <div class="col"> <strong>บริษัทจัดส่ง:</strong> <br> {{$informs->company}} </div>
-                    <div class="col"> <strong>ที่อยู่ที่จัดส่ง:</strong> <br> {{$informs->address}} <span>{{$informs->postalcode}} </span></div>
+                    <div class="col"> <strong>ที่อยู่ที่จัดส่ง:</strong> <br> {{$item->address}} <span>{{$item->postalcode}} </span></div>
                     <div class="col"> <strong>Tracking #:</strong> <br> {{$informs->tracking_number}} </div>
                 </div>@endforeach
+              
             </article>
+            @endforeach
             <article class="card">
             <div class="track">
                 @if($informs->tracking == 'processed')
                   <div class="step active"> <span class="icon"> <i class="fas fa-check"></i> </span> <span class="text">กำลังนำเนินการ</span> </div>
                   <div class="step"> <span class="icon"> <i class="fas fa-user"></i> </span> <span class="text"> จัดเตรียมสินค้า</span> </div>
                   <div class="step"> <span class="icon"> <i class="fas fa-truck"></i> </span> <span class="text"> จัดส่งแล้ว </span> </div>
+                
                   
                 @elseif ($informs->tracking=='packing')
                     <div class="step active"> <span class="icon"> <i class="fas fa-check"></i> </span> <span class="text">กำลังนำเนินการ</span> </div>
                   <div class="step active" > <span class="icon"> <i class="fas fa-user"></i> </span> <span class="text"> จัดเตรียมสินค้า</span> </div>
                   <div class="step"> <span class="icon"> <i class="fas fa-truck"></i> </span> <span class="text"> จัดส่งแล้ว </span> </div>
+                
+                  
                 @elseif ($informs->tracking=='delivered')
                     <div class="step active"> <span class="icon"> <i class="fas fa-check"></i> </span> <span class="text">กำลังนำเนินการ</span> </div>
                     <div class="step active"> <span class="icon"> <i class="fas fa-user"></i> </span> <span class="text"> จัดเตรียมสินค้า</span> </div>

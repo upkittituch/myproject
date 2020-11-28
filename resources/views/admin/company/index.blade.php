@@ -63,6 +63,6 @@
           <!--Row-->
         </div>
         <!---Container Fluid-->
-      </div>
-</div>
+    
+
 @endsection

@@ -11,14 +11,35 @@
               <li class="breadcrumb-item active" aria-current="page">Order Tables</li>
             </ol>
           </div>
-
+		 
+	
            	<div class="row justify-content-center">
  		<div class="col-md-8">
 		 <a class="fas fa-arrow-left" href="{{route('order.index')}}"> ย้อนกลับ</a>
  			@foreach($carts as $cart)
+			 
 
  			<div class="card mb-3">
+					@foreach($up as $address)
+					
+			 
+						<article class="card">
+							
+							
+						
+						<div class="card-body row ">
+						
+							<div class="col"> <strong>สถานที่จัดส่ง:</strong> <br> {{$address->address}} </div>
+							<div class="col"> <strong>รหัสไปรษณีย์:</strong> <br> {{$address->postcode}} </div>
+							<div class="col"> <strong>เบอร์โทรศัพท์:</strong> <br> {{$address->phone}} </div>
+							
+						</div>
+							</article>
+		
+							
+				 			@endforeach
  				<div class="card-body">
+				 
 				 
  					@foreach($cart->items as $item)
  					<span class="float-right">
@@ -40,13 +61,11 @@
 		  </div>
 		 
  			</div>
-
- 			
- 			
+			 
  			@endforeach
  		</div>
  	</div>
-
+	 </div>
 
 
  @endsection

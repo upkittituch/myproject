@@ -8,8 +8,11 @@
 	 
  		<div class="col-md-8">
 		 <a class="fas fa-arrow-left" href="/orders"> ย้อนกลับ</a>
+		 
+
  			@foreach($carts as $cart)
  			<div class="card mb-3">
+		
  				<div class="card-body">
  					@foreach($cart->items as $item)
  					<span class="float-right">

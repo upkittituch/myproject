@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Cart;
@@ -10,6 +10,7 @@ use App\User;
 use App\Mail\Sendmail;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
 use App\Company;
+use App\Address;
 
 
 
@@ -62,7 +63,6 @@ class CartController extends Controller
     		session()->forget('cart');
     	}else{
     		session()->put('cart',$cart);
-    		
 
     	}
     	
@@ -70,8 +70,8 @@ class CartController extends Controller
     }
 
     public function checkout($amount,Request $request){
-      
-           
+        
+        $address = auth()->user()->addressed;  
         
         if(session()->has('cart')){
             $cart = new Cart(session()->get('cart'));
@@ -79,7 +79,8 @@ class CartController extends Controller
         }else{
             $cart = null;
         }  
-        return view('checkout',compact('amount','cart'));
+        
+        return view('checkout',compact('amount','cart','address'));
     }
 
     public function charge(Request $request){
@@ -91,44 +92,32 @@ class CartController extends Controller
             'description'=>'pay status',
            
         ]);
-        
         $chargeId = $charge['id'];
-        
         if(session()->has('cart')){
             $cart = new Cart(session()->get('cart'));
             
         }else{
             $cart = null;
         } 
-     
-
-      
-
         if($chargeId){
 
             auth()->user()->orders()->create([
                 'cart'=>serialize(session()->get('cart')),
-                'phone'=>$request->phone  , 
+              
                 'name'=>$request->name   ,
                 'address'=>$request->address,
-                'postalcode'=>$request->postalcode
+               
             ]);
-           
-
             session()->forget('cart');
-            
-            return redirect()->to('/thankyou');
-                
+ 
+            return redirect()->to('/thankyou');    
         }else{
             return redirect()->back();
-        }
-
+        } 
     }
     //for loggedin user
     public function order(){ 
         $orders = auth()->user()->orders;
-        
-        
         return view('order',compact('orders'));
 
    }
@@ -140,14 +129,21 @@ class CartController extends Controller
         return view('admin.order.index',compact('orders'));
         
     }
-    public function viewUserOrder($userid,$orderid){
+    public function viewUserOrder($userid,$orderid,$address){
         $user = User::find($userid);
+   
+        $zz=User::find($userid)->addressed->where('id',$address);
+        $up=$zz;
+        // $up=$address->address;
+        
+        
         $orders = $user->orders->where('id',$orderid);
         $carts =$orders->transform(function($cart,$key){
             return unserialize($cart->cart);
 
         });
-        return view('admin.order.show',compact('carts'));
+     
+        return view('admin.order.show',compact('carts','up'));
     }
     //status payment
     public function editStatus($id,$orderid){
@@ -155,16 +151,85 @@ class CartController extends Controller
         $orders = Order::find($orderid);
         return view('admin.order.status',compact('orders','company'));
     }
-
+    
     public function updateStatus(Request $request, $id,$orderid){
         $orders = Order::find($orderid);
-        $orders->payment=$request->input('payment');
         $orders->tracking=$request->input('tracking');
         $orders->company=$request->input('company');
         $orders->tracking_number=$request->input('tracking_number');
         $orders->save();
+        $order=User::find($id)->where('id',$id)->select('userId')->get();
+        $up=json_encode($order);
+        $cut=mb_substr($up,12,-3);
+
+        if($orders->tracking=='packing'){
+            $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient('+sCKQKTaNez/c8BzdGJRxk8NAeqNjRAmBvGdmqlqPPRxhyA9xZHh5av2RhW9VCEdl2KPfislOKZuuTw6fuOuGDs6JklgztzFNy/NWpmG5jX47Wo1exyp70BioFL9mxsEkhWwSGKEit4hxhDdT8dYNgdB04t89/1O/w1cDnyilFU=+sCKQKTaNez/c8BzdGJRxk8NAeqNjRAmBvGdmqlqPPRxhyA9xZHh5av2RhW9VCEdl2KPfislOKZuuTw6fuOuGDs6JklgztzFNy/NWpmG5jX47Wo1exyp70BioFL9mxsEkhWwSGKEit4hxhDdT8dYNgdB04t89/1O/w1cDnyilFU=');
+            $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => 'f1dbce386793edb47c112e096efefa29']);
+            $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('สินค้าของท่านกำลังดำเนินการ');//text
+            $response = $bot->pushMessage($cut, $textMessageBuilder); 
+        }elseif ($orders->tracking=='delivered') {
+            $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient('+sCKQKTaNez/c8BzdGJRxk8NAeqNjRAmBvGdmqlqPPRxhyA9xZHh5av2RhW9VCEdl2KPfislOKZuuTw6fuOuGDs6JklgztzFNy/NWpmG5jX47Wo1exyp70BioFL9mxsEkhWwSGKEit4hxhDdT8dYNgdB04t89/1O/w1cDnyilFU=+sCKQKTaNez/c8BzdGJRxk8NAeqNjRAmBvGdmqlqPPRxhyA9xZHh5av2RhW9VCEdl2KPfislOKZuuTw6fuOuGDs6JklgztzFNy/NWpmG5jX47Wo1exyp70BioFL9mxsEkhWwSGKEit4hxhDdT8dYNgdB04t89/1O/w1cDnyilFU=');
+            $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => 'f1dbce386793edb47c112e096efefa29']);
+            $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('สินค้าของท่านกำลังจัดส่ง'."\n".'จัดส่งโดย : '.$orders->company."\n".'เลขสินค้าของท่านเราจะส่งถัดจากข้อความนี้ ');//text
+            $text= new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($orders->tracking_number);
+            
+            $response = $bot->pushMessage($cut, $textMessageBuilder); 
+            $response = $bot->pushMessage($cut, $text); 
+        }else{
+            $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient('+sCKQKTaNez/c8BzdGJRxk8NAeqNjRAmBvGdmqlqPPRxhyA9xZHh5av2RhW9VCEdl2KPfislOKZuuTw6fuOuGDs6JklgztzFNy/NWpmG5jX47Wo1exyp70BioFL9mxsEkhWwSGKEit4hxhDdT8dYNgdB04t89/1O/w1cDnyilFU=+sCKQKTaNez/c8BzdGJRxk8NAeqNjRAmBvGdmqlqPPRxhyA9xZHh5av2RhW9VCEdl2KPfislOKZuuTw6fuOuGDs6JklgztzFNy/NWpmG5jX47Wo1exyp70BioFL9mxsEkhWwSGKEit4hxhDdT8dYNgdB04t89/1O/w1cDnyilFU=');
+            $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => 'f1dbce386793edb47c112e096efefa29']);
+            
+        }
         return redirect('auth/orders');
       
+ 
+    }
+
+    public function editPayment($id,$orderid){
+        $company = Company::get();
+        $orders = Order::find($orderid);
+        return view('admin.order.payment',compact('orders'));
+    }
+
+    public function updatePayment(Request $request, $id,$orderid){
+        $orders = Order::find($orderid);
+        $orders->payment=$request->input('payment');
+        $orders->save();
+
+        $order=User::find($id)->where('id',$id)->select('userId')->get();
+        $up=json_encode($order);
+        $cut=mb_substr($up,12,-3);
+
+        $user = User::find($id);
+        $upcart = $user->orders->where('id',$orderid);
+        $carts =$upcart->transform(function($cart,$key){
+            return unserialize($cart->cart);
+        });
+        foreach ($carts as $p) { 
+            // print_r('array1 : ');  
+            // echo json_encode ($p);
+             $up =$p->totalPrice; 
+            //  $js=$p->items;     
+            //  $product=json_encode($js);
+            foreach($p->items as $product){
+                $js=json_encode($product);
+
+            }
+              
+        }
+        // echo($cut);
+        if($orders->payment=='success'){
+            $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient('+sCKQKTaNez/c8BzdGJRxk8NAeqNjRAmBvGdmqlqPPRxhyA9xZHh5av2RhW9VCEdl2KPfislOKZuuTw6fuOuGDs6JklgztzFNy/NWpmG5jX47Wo1exyp70BioFL9mxsEkhWwSGKEit4hxhDdT8dYNgdB04t89/1O/w1cDnyilFU=+sCKQKTaNez/c8BzdGJRxk8NAeqNjRAmBvGdmqlqPPRxhyA9xZHh5av2RhW9VCEdl2KPfislOKZuuTw6fuOuGDs6JklgztzFNy/NWpmG5jX47Wo1exyp70BioFL9mxsEkhWwSGKEit4hxhDdT8dYNgdB04t89/1O/w1cDnyilFU=');
+            $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => 'f1dbce386793edb47c112e096efefa29']);
+            $text = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('คำสั่งชื่อเลขที่ :'.$orderid."\n".'ราคารวม  : '.$up.' บาท'."\n".'การชำระเงินของท่านได้รับการยืนยันแล้ว'."\n".'ทางเราจะรีบดำเนินการในขั้นตอนถัดไปขอบคุณครับ');
+            $response = $bot->pushMessage($cut, $text); 
+        }else{
+            $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient('+sCKQKTaNez/c8BzdGJRxk8NAeqNjRAmBvGdmqlqPPRxhyA9xZHh5av2RhW9VCEdl2KPfislOKZuuTw6fuOuGDs6JklgztzFNy/NWpmG5jX47Wo1exyp70BioFL9mxsEkhWwSGKEit4hxhDdT8dYNgdB04t89/1O/w1cDnyilFU=+sCKQKTaNez/c8BzdGJRxk8NAeqNjRAmBvGdmqlqPPRxhyA9xZHh5av2RhW9VCEdl2KPfislOKZuuTw6fuOuGDs6JklgztzFNy/NWpmG5jX47Wo1exyp70BioFL9mxsEkhWwSGKEit4hxhDdT8dYNgdB04t89/1O/w1cDnyilFU=');
+            $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => 'f1dbce386793edb47c112e096efefa29']);
+            
+         }
+         return redirect('auth/orders');
+            // dd($p);
     }
     public function search(Request $request){
         $search= $request->get('search');
@@ -186,24 +251,29 @@ class CartController extends Controller
        
     }
 
-    public function tracking($userid,$orderid){
+    public function tracking($userid,$orderid,$address){
         $inform = Order::find($orderid)->where('id',$orderid)->get();
         $user = User::find($userid);
+    
+        $zz=User::find($userid)->addressed->where('id',$address);
+        $up=$zz;
+
         $orders = $user->orders->where('id',$orderid);
         $carts =$orders->transform(function($cart,$key){
             return unserialize($cart->cart);
 
         });
-        return view('trackinguser',compact('carts','inform'));
+       
+        return view('trackinguser',compact('carts','inform','up'));
        
     }
     public function frontSearch(Request $request){
         $search= $request->get('search');
       
-       
         $orders = Product::where('name',$search)->orWhere('name',$search)->get();
 
         return view('admin.order.index',['orders'=>$orders]);
-       
     }
+    
+    
 }

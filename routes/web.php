@@ -15,13 +15,16 @@ use Illuminate\Support\Facades\Route;
 
 
 Auth::routes();
-
+Route::get('/', 'HomeController@index')->middleware('auth');
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 
 
 Route::get('/thankyou', 'FrontendController@thankyou')->name('thankyou');
 Route::get('/shop/{id}','FrontendController@show')->name('product.view');
 Route::get('/category/{name}','FrontendController@filter')->name('product.filter');
+
+Route::resource('address','AddressController');
+
 
 
 Route::get('/orders','CartController@order')->name('order')->middleware('auth');
@@ -32,8 +35,7 @@ Route::get('/addToCart/{product}','CartController@addToCart')->name('add.cart');
 Route::post('/products/{product}','CartController@updateCart')->name('cart.update');
 Route::post('/product/{product}','CartController@removeCart')->name('cart.remove');
 Route::get('/cart','CartController@showCart')->name('cart.show');
-Route::get('/tracking/{userid}/{orderid}','CartController@tracking')->name('user.tracking')->middleware('auth'); 
-
+Route::get('/tracking/{userid}/{orderid}/{address}','CartController@tracking')->name('user.tracking')->middleware('auth'); 
 
 
 Route::resource('company','CompanyController');
@@ -56,7 +58,9 @@ Route::group(['prefix'=>'auth','middleware'=>['auth','isAdmin']],function(){
 	Route::get('/orders','CartController@userOrder')->name('order.index')->middleware('auth');
 	Route::get('/orders/{userid}/{orderid}/edit','CartController@editStatus')->name('status.edit');
 	Route::put('/orders/{userid}/{orderid}/edit','CartController@updateStatus')->name('status.update');
-	Route::get('/orders/{userid}/{orderid}','CartController@viewUserOrder')->name('user.order');
+	Route::get('/orders/{userid}/{orderid}/editpayment','CartController@editPayment')->name('payment.edit');
+	Route::put('/orders/{userid}/{orderid}/editpayment','CartController@updatePayment')->name('payment.update');
+	Route::get('/orders/{userid}/{orderid}/{address}','CartController@viewUserOrder')->name('user.order');
 	Route::get('/orders/search', 'CartController@search')->name('order.search');
 
 	

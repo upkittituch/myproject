@@ -18,6 +18,7 @@
       @include('admin.layouts.footer')
       <!-- Footer -->
     </div>
+    
   </div>
 
   <!-- Scroll to top -->

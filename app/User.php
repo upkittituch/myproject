@@ -7,6 +7,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Order;
+use App\Address;
 
 class User extends Authenticatable
 {
@@ -18,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','userId'
+        'id','name', 'email', 'password','userId'
     ];
     protected $guarded =[];
 
@@ -41,11 +42,14 @@ class User extends Authenticatable
     ];
 
     public function orders(){
-        return $this->hasMany('App\Order');
+        return $this->hasMany('App\Order','user_id', 'id');
     }
     public function getUserOrders(){
         $users = Order::get();
         return $users;
+    }
+    public function addressed(){
+        return $this->hasMany('App\Address','user_id','id');
     }
    
     

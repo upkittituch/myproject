@@ -11,6 +11,9 @@ class FrontendController extends Controller
     public function index()
     {
         $products = Product::get();
+        
+       
+
         return view('product',compact('products'));
     }
     public function show($id){
@@ -47,7 +50,6 @@ class FrontendController extends Controller
         
         return view ('thankyou');
     }
-   
-   
+    
     
 }

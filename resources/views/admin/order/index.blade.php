@@ -35,12 +35,13 @@
                       <tr>
                         <th>ลำดับ</th>
                         <th>ชื่อ</th>
-                        <th>เมล์</th>
                         <th>วันที่สั่ง</th>
                         <th>สถานะการจ่าย</th>
                         <th>สถานะการจัดส่ง</th>
                         <th>ดูข้อมูล</th>
-                        <th>แก้ไขสถานะ</th>
+                        <th>แก้ไขการจัดส่ง</th>
+                        <th>แก้ไขการจ่าย</th>
+                       
                         
                       </tr>
                     </thead>
@@ -52,7 +53,6 @@
                         <td><a href="#">{{$order->id}}</a></td>
                        
                         <td>{{$order->name}}</td>
-                        <td>{{$order->user->email}}</td>
                         <td>{{date('d-M-y',strtotime($order->created_at))}}</td>
                           
                           @if($order->payment == 'success')
@@ -72,13 +72,18 @@
                           @endif
                         
                         <td>
-                            <a href="{{route('user.order',[$order->user_id,$order->id])}}">
-                                <button class="btn btn-info">View Order</button>
+                            <a href="{{route('user.order',[$order->user_id,$order->id,$order->address])}}">
+                                <button class="btn btn-sm btn-info">view order</button>
                             </a>
                         </td>
                         <td>
                             <a href="{{route('status.edit',[$order->user_id,$order->id])}}">
-                                <button class="btn btn-sm btn-primary">edit</button>
+                                <button class="btn btn-sm btn-primary">status</button>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{{route('payment.edit',[$order->user_id,$order->id])}}">
+                                <button class="btn btn-sm btn-primary">payment</button>
                             </a>
                         </td>
                         
@@ -105,6 +110,7 @@
                         </div>
                       </div>
           <!--Row-->
+        </div>
         </div>
 
   @endsection

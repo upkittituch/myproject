@@ -14,16 +14,7 @@
                   <h6 class="m-0 font-weight-bold text-primary">edit</h6>
                 </div>
                 <div class="card-body">
-                    <div class="form-group"> 
-                      <label for="">payment</label>
-
-                          <select name="payment" id="payment">
-                            <option value="{{$orders->payment}}">{{$orders->payment}}</option>
-                            <option value="success">success</option>
-                            <option value="cancel">cancel</option>
-                          </select>
-                     
-                    </div>
+                   
                     <div class="form-group"> 
                       <label for="">tracking</label>
                           <select name="tracking" id="tracking">
@@ -55,6 +46,6 @@
             </form>
 
           </div>
-          </div>
+          
 </div>
 @endsection

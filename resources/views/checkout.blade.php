@@ -105,20 +105,14 @@
                       </div>
                     
                       <div class="form-group">
-
-                        <label>Adress</label>
-                        <input type="text" name="address" id="address" class="form-control" required="">
-                      </div>
-                      <div class="form-group">
-
-                        <label>phone</label>
-                        <input type="text" name="phone" id="phone" class="form-control" required="">
-                      </div>
-                      <div class="form-group">
-
-                        <label>Postal code</label>
-                        <input type="text" name="postalcode" id="postalcode" class="form-control" required="">
-                      </div>
+                            <label for="">Choose Address</label>
+                              <select name="address"  class="form-control" id="address"  required=""  >
+                                <option value="">select</option>
+                                @foreach($address as $item)
+                                  <option value="{{$item->id}}">{{$item->title}}</option>
+                                @endforeach
+                              </select>   
+                          </div>
                       <div class="">
               <input type="hidden" name="amount" value="{{$amount}}">
 
@@ -174,6 +168,12 @@
                     </div>
                 </a>
                 @endif
+                <a href="{{route('address.index')}}" class="footer-nav-single">
+                    <div class="menu-wrapper">
+                        <img src="{{asset('img/icons/list.svg')}}" class="injectable" alt="">
+                        <span>Address</span>
+                    </div>
+                </a>
             </div>
         </footer>
       
@@ -249,7 +249,7 @@ form.addEventListener('submit', function(event) {
   var options={
     name:document.getElementById('name').value,
     address_line1:document.getElementById('address').value,
-    address_zip:document.getElementById('postalcode').value
+    
   }
 
   stripe.createToken(card,options).then(function(result) {
@@ -278,8 +278,7 @@ function stripeTokenHandler(token) {
   form.submit();
 }
 }
-
-
 </script>
+
 
 @endsection

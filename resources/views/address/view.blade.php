@@ -24,7 +24,6 @@
                                 </form>
                             </div>
                         </div>
-                        
                     </div>
                 </div>
             </div>
@@ -36,24 +35,13 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-3">
-                        <a href="{{route('shop')}}" class="back-link"> <i class="fas fa-angle-left"></i> Back</a>
+                        <a href="{{route('address.index')}}" class="back-link"> <i class="fas fa-angle-left"></i> Back</a>
                     </div>
                     <div class="col-6">
-                        <h1 class="page-title text-center">order</h1>
+                        <h1 class="page-title text-center">Address</h1>
                     </div>
-                    <div class="col-3">
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                                onclick="event.preventDefault();
-                                                                document.getElementById('logout-form').submit();">
-                                                        <i class="fas fa-sign-out-alt"></i>
-                                                            Logout
-
-                                </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                 </div>
+                    
+                    
             </div>
         </div>
  <div class="container">
@@ -67,41 +55,34 @@
                   <table class="table align-items-center table-flush">
                     <thead class="thead-light">
                       <tr>
-                        <th>#</th>
+                        
                         <th>ชื่อ</th>
-                        <th>วันที่สั่ง</th>
-                        <th>ดูข้อมูล</th>
+                        <th>ที่อยู่</th>
+                        <th>รหัสไปรษณีย์</th>
+                        <th>เบอร์โทรศัพท์</th>
                        
                         
                       </tr>
                     </thead>
                     <tbody>
-                      @if(count($orders)>0)
-                      @foreach($orders as $order)
+                     
+                      @foreach($useraddress as $item)
                       <tr>
 
-                        <td><a href="#">{{$order->id}}</a></td>
+                        
                        
-                        <td>{{$order->user->name}}</td>
-                        <td>{{date('d-M-y',strtotime($order->created_at))}}</td>
-
-                        <td>
-                            <a href="{{route('user.tracking',[$order->user_id,$order->id,$order->address])}}">
-                                <button class="btn btn-warning"style="width:92; height:20">ดูข้อมูล</button>
-                            </a>
-                        </td>
-                       
-                       
+                        <td>{{$item->title}}</td>
+                        <td>{{$item->address}}</td>
+                        <td>{{$item->postcode}}</td>
+                        <td>{{$item->phone}}</td>
+         
                       </tr>
                       @endforeach
  		</div>
  	</div>
-	 		          	    @else
-                      <td>No any orders to show</td>
-                      @endif
- 	
+	 		          
                      
-
+                      </div>
  </div>
  <footer>
         
@@ -132,12 +113,7 @@
 
           
             @endif
-            <a href="{{route('address.index')}}" class="footer-nav-single">
-                    <div class="menu-wrapper">
-                        <img src="{{asset('img/icons/list.svg')}}" class="injectable" alt="">
-                        <span>Address</span>
-                    </div>
-                </a>
+
            
         </div>
     </footer>

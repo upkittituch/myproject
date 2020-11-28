@@ -24,7 +24,6 @@
                                 </form>
                             </div>
                         </div>
-                        
                     </div>
                 </div>
             </div>
@@ -36,24 +35,15 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-3">
-                        <a href="{{route('shop')}}" class="back-link"> <i class="fas fa-angle-left"></i> Back</a>
+                        
                     </div>
                     <div class="col-6">
-                        <h1 class="page-title text-center">order</h1>
+                        <h1 class="page-title text-center">Address</h1>
                     </div>
                     <div class="col-3">
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                                onclick="event.preventDefault();
-                                                                document.getElementById('logout-form').submit();">
-                                                        <i class="fas fa-sign-out-alt"></i>
-                                                            Logout
-
-                                </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                 </div>
+                    <a  href="address/create" class="back-link"> <i class="far fa-plus-square"></i>Create</a>        
+                    </div>
+                    
             </div>
         </div>
  <div class="container">
@@ -67,41 +57,54 @@
                   <table class="table align-items-center table-flush">
                     <thead class="thead-light">
                       <tr>
-                        <th>#</th>
+                        
                         <th>ชื่อ</th>
-                        <th>วันที่สั่ง</th>
                         <th>ดูข้อมูล</th>
+                        <th>แก้ไข</th>
+                        <th>ลบ</th>
                        
                         
                       </tr>
                     </thead>
                     <tbody>
-                      @if(count($orders)>0)
-                      @foreach($orders as $order)
+                      @if(count($address)>0)
+                      @foreach($address as $item)
                       <tr>
 
-                        <td><a href="#">{{$order->id}}</a></td>
+                    
                        
-                        <td>{{$order->user->name}}</td>
-                        <td>{{date('d-M-y',strtotime($order->created_at))}}</td>
+                        <td>{{$item->title}}</td>
+                        
 
                         <td>
-                            <a href="{{route('user.tracking',[$order->user_id,$order->id,$order->address])}}">
+                            <a href="{{route('address.show',[$item->id])}}">
                                 <button class="btn btn-warning"style="width:92; height:20">ดูข้อมูล</button>
                             </a>
                         </td>
+                        <td>
+                            <a href="{{route('address.edit',[$item->id])}}">
+                                <button class="btn btn-warning"style="width:92; height:20">แก้ไข</button>
+                            </a>
+                        </td>
+                        <td>
+                        <form action="{{route('address.destroy',[$item->id])}}" method="post">@csrf  
+                        {{method_field('DELETE')}}
+                        <input type="submit" value="ลบ"class="btn btn-warning" style="width:92; height:20" onclick=" return confirm('u want delete ? id {{$item->id}} {{$item->title}}') ">
+                        </form>
+                        </td>
+                        
                        
                        
                       </tr>
                       @endforeach
  		</div>
  	</div>
-	 		          	    @else
-                      <td>No any orders to show</td>
+	 		         @else
+                      <td>No any address to show</td>
                       @endif
  	
                      
-
+                      </div>
  </div>
  <footer>
         
@@ -129,8 +132,6 @@
                     <span>Profile</span>
                 </div>
             </a>
-
-          
             @endif
             <a href="{{route('address.index')}}" class="footer-nav-single">
                     <div class="menu-wrapper">
@@ -138,7 +139,7 @@
                         <span>Address</span>
                     </div>
                 </a>
-           
+            
         </div>
     </footer>
     <script src="{{asset('js/modernizr-2.8.3.min.js')}}"></script>
