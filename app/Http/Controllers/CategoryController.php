@@ -91,7 +91,7 @@ class CategoryController extends Controller
         $category = Category::find($id);
         $filename = $category->image;
         if($request->file('image')){
-            $image = $request->file('image')->store('storage/category'); 
+            $image = $request->file('image')->store('public/storage/category'); 
             \Storage::delete($filename);
         $category->name = $request->name;
         $category->image = $image;
