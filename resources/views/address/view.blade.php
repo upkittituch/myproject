@@ -113,6 +113,12 @@
 
           
             @endif
+            <a href="{{route('address.index')}}" class="footer-nav-single">
+                    <div class="menu-wrapper">
+                        <img src="{{asset('img/icons/list.svg')}}" class="injectable" alt="">
+                        <span>Address</span>
+                    </div>
+                </a>
 
            
         </div>

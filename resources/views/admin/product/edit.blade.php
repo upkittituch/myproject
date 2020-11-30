@@ -34,9 +34,7 @@
                     </div>
                     <div class="form-group">
                       <label for="">Description</label>
-                      <textarea name="desc" id="desc" class="form-control ">
-                        {!!$product->desc!!}
-                      </textarea>
+                      <textarea name="desc" id="desc" class="form-control ">{!!$product->desc!!}</textarea>
                       
                       
                     </div>
