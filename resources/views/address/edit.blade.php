@@ -64,7 +64,7 @@
                         placeholder="Enter name of category" value="{{$address->title}}">
                     </div>
                     <div class="form-group"> 
-                    <textarea name="address" id="" class="form-control " > {{$address->address}}</textarea>
+                    <textarea name="address" id="" class="form-control " >{{$address->address}}</textarea>
                     </div>
                     <div class="form-group"> 
                       <label for="">postcode</label>
