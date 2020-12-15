@@ -65,9 +65,9 @@
                           <td ><span style='font-size:17px' class="badge badge-info">{{$order->payment}}</span></td> 
                           @endif
                           
-                          @if($order->tracking =='กำลังจัดเตรียมสินค้า')
+                          @if($order->tracking =='กำลังดำเนินการ')
                           <td><span style='font-size:17px' class="badge badge-warning">{{$order->tracking}}</span></td>
-                          @elseif ($order->tracking=='กำลังดำเนินการ')
+                          @elseif ($order->tracking=='กำลังจัดเตรียมสินค้า')
                           <td ><span style='font-size:17px' class="badge badge-secondary">{{$order->tracking}}</span></td>  
                           @elseif ($order->tracking =='กำลังจัดส่ง')
                           <td ><span style='font-size:17px' class="badge badge-success">{{$order->tracking}}</span></td>   

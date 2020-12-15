@@ -244,7 +244,7 @@
                                                 <span class="discounted-price ">{{$product->price}} บาท</span>
                                             </div>
                                       </div>
-                                </div> 
+                                      </div>
                               </div>
                               @endforeach
                           </div>
@@ -328,8 +328,13 @@ div.img-resize img {
 div.img-resize {
 	width: 150px;
 	height: 180px;
-	overflow: hidden;
+	overflow: hidden; 
 	text-align: center;
+}
+div.grid-product{
+    
+    width: 182px;
+	height: 316px;
 }
 </style>
 

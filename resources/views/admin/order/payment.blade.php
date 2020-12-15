@@ -16,22 +16,30 @@
                 <div class="card-body">
                     <div class="form-group"> 
                       <label for="">payment</label>
-
+                      @if($orders->payment =='เก็บเงินปลายทาง')
+                      <select name="payment" id="payment">
+                      <option value="เก็บเงินปลายทาง">เก็บเงินปลายทาง</option>
+                      </select>
+                      
+                      @else
                           <select name="payment" id="payment">
                             <option value="{{$orders->payment}}">{{$orders->payment}}</option>
                             <option value="ยืนยันเรียบร้อยแล้ว">ยืนยันเรียบร้อยแล้ว</option>
                             <option value="ยกเลิก">ยกเลิก</option>
                           </select>
-                     
+                          @endif
                     </div>
                     
                     <br>   
                     <button type="submit" class="btn btn-primary">Update</button>
                 </div>
+                
               </div>
+              
             </form>
 
           </div>
-          
+        
 </div>
+
 @endsection

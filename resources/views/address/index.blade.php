@@ -67,7 +67,8 @@
                       </tr>
                     </thead>
                     <tbody>
-                      @if(count($address)>0)
+                   
+                      @if(count($address) > 0)
                       @foreach($address as $item)
                       <tr>
 
@@ -92,19 +93,20 @@
                         <input type="submit" value="ลบ"class="btn btn-warning" style="width:92; height:20" onclick=" return confirm('u want delete ? id {{$item->id}} {{$item->title}}') ">
                         </form>
                         </td>
-                        
-                       
-                       
+
                       </tr>
                       @endforeach
- 		</div>
- 	</div>
-	 		         @else
+                      
+                      @else
                       <td>No any address to show</td>
                       @endif
- 	
+ 		
                      
+ 	
+                      
                       </div>
+ 	</div>
+	 		     
  </div>
  <footer>
         

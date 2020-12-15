@@ -16,6 +16,7 @@ class AddressController extends Controller
     public function index()
     { 
         $address = auth()->user()->addressed;
+        
        
         return view('address.index',compact('address'));
     }
@@ -43,7 +44,7 @@ class AddressController extends Controller
             'title'=>'required',
             'address'=>'required',
             'postcode'=>'required',
-            'phone'=>'required',
+            'phone'=>'required'
             
         ]);
      
@@ -97,7 +98,10 @@ class AddressController extends Controller
         $address->postcode=$request->input('postcode');
         $address->phone=$request->input('phone');
         $address->save();
-        return view('address.index',compact('address'));
+
+        
+        
+        return redirect()->route('address.index',compact('address'));
     }
 
     /**

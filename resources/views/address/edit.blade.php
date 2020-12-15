@@ -60,31 +60,32 @@
                 <div class="card-body">
                     <div class="form-group"> 
                       <label for="">title</label>
-                      <input type="text" name="name" class="form-control" id="" aria-describedby=""
-                        placeholder="Enter name of category" value="{{$address->title}}">
+                      <input type="text" name="title" class="form-control"  aria-describedby=""value="{{$address->title}}">
                     </div>
                     <div class="form-group"> 
-                    <textarea name="address" id="" class="form-control " >{{$address->address}}</textarea>
+                    <label for="">address</label>
+                    <textarea  name="address"  class="form-control" >{{$address->address}}</textarea>
                     </div>
                     <div class="form-group"> 
                       <label for="">postcode</label>
-                      <input type="text" name="name" class="form-control" id="" aria-describedby=""
-                        placeholder="Enter name of category" value="{{$address->postcode}}">
+                      <input type="text" name="postcode" class="form-control" aria-describedby=""
+                        value="{{$address->postcode}}">
                     </div>
                     <div class="form-group"> 
                       <label for="">phone</label>
-                      <input type="text" name="name" class="form-control" id="" aria-describedby=""
-                        placeholder="Enter name of category" value="{{$address->phone}}">
+                      <input type="text" name="phone" class="form-control"  aria-describedby=""
+                         value="{{$address->phone}}">
                     </div>
                     
-                     
-                    <br>   
                     <button type="submit" class="btn btn-primary">Update</button>
+                    <br>   
+                  
                 </div>
               </div>
             </form>
+            </table>
                     </div>
-               
+                    </div>   
  </div>
  <footer>
         
