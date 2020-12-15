@@ -55,19 +55,21 @@
                         <td>{{$order->name}}</td>
                         <td>{{date('d-M-y',strtotime($order->created_at))}}</td>
                           
-                          @if($order->payment == 'success')
+                          @if($order->payment == 'ยืนยันเรียบร้อยแล้ว')
                           <td><span style='font-size:17px' class="badge badge-success">{{$order->payment}}</span></td>
-                          @elseif ($order->payment=='cancel')
+                          @elseif ($order->payment=='ยกเลิก')
                           <td ><span style='font-size:17px' class="badge badge-danger">{{$order->payment}}</span></td>  
-                          @elseif ($order->payment =='unconfirmed')
-                          <td ><span style='font-size:17px' class="badge badge-warning">{{$order->payment}}</span></td>   
+                          @elseif ($order->payment =='ยังไม่ได้รับการยืนยัน')
+                          <td ><span style='font-size:17px' class="badge badge-warning">{{$order->payment}}</span></td>  
+                          @elseif ($order->payment =='เก็บเงินปลายทาง')
+                          <td ><span style='font-size:17px' class="badge badge-info">{{$order->payment}}</span></td> 
                           @endif
                           
-                          @if($order->tracking == 'packing')
+                          @if($order->tracking =='กำลังจัดเตรียมสินค้า')
                           <td><span style='font-size:17px' class="badge badge-warning">{{$order->tracking}}</span></td>
-                          @elseif ($order->tracking=='processed')
+                          @elseif ($order->tracking=='กำลังดำเนินการ')
                           <td ><span style='font-size:17px' class="badge badge-secondary">{{$order->tracking}}</span></td>  
-                          @elseif ($order->tracking =='delivered')
+                          @elseif ($order->tracking =='กำลังจัดส่ง')
                           <td ><span style='font-size:17px' class="badge badge-success">{{$order->tracking}}</span></td>   
                           @endif
                         

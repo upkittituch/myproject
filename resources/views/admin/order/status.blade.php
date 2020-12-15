@@ -19,8 +19,8 @@
                       <label for="">tracking</label>
                           <select name="tracking" id="tracking">
                             <option value="{{$orders->tracking}}">{{$orders->tracking}}</option>
-                            <option value="packing">packing</option>
-                            <option value="delivered">delivered</option>
+                            <option value="กำลังจัดเตรียมสินค้า">กำลังจัดเตรียมสินค้า</option>
+                            <option value="กำลังจัดส่ง">กำลังจัดส่ง</option>
                           </select>
                     </div>
                     
@@ -28,6 +28,7 @@
                       <label for="">company</label>
                      
                           <select name="company" id="company">
+                          <option value="-">-</option>
                           @foreach($company as $companys)
                             <option value="{{$companys->company_name}}">{{$companys->company_name}}</option>
                             @endforeach

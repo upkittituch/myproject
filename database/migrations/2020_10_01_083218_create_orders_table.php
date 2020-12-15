@@ -19,8 +19,8 @@ class CreateOrdersTable extends Migration
             $table->text('name');
             $table->text('cart');
             $table->text('company')->default('-');
-            $table->text('payment')->default('unconfirmed');
-            $table->text('tracking')->default('processed');
+            $table->text('payment')->default('ยังไม่ได้รับการยืนยัน');
+            $table->text('tracking')->default('กำลังดำเนินการ');
             $table->text('tracking_number')->default('-');
             $table->text('address');
             $table->timestamps();

@@ -122,10 +122,12 @@
                     <div class=" col">
                         <h4 class="grand-total-title"> Total <span>{{$cart->totalPrice}} บาท</span></h4>
                         
-                        <a href="{{route('cart.checkout',$cart->totalPrice)}}">Checkout</a>
+                        <a href="{{route('cart.checkout',$cart->totalPrice)}}">ชำระเงินผ่านบัตร</a></br>  
+                        <a href="{{route('checklater',$cart->totalPrice)}}">เก็บเงินปลายทาง</a>
+                       
                         
                     </div>
-                </div>
+                    </div>
             </div><br><br><br><br>
             @else
             <td>No items in cart</td>

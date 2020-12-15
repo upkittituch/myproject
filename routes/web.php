@@ -30,7 +30,10 @@ Route::resource('address','AddressController');
 Route::get('/orders','CartController@order')->name('order')->middleware('auth');
 Route::get('/ordersuser/{userid}/{orderid}','CartController@orderuser')->name('user.view')->middleware('auth');
 Route::get('/checkout/{amount}','CartController@checkout')->name('cart.checkout');
+Route::get('/checkoutlater/{amount}','CartController@checklater')->name('checklater');
 Route::post('/charge','CartController@charge')->name('cart.charge')->middleware('auth');
+Route::post('/chargelater','CartController@chargelater')->name('chargelater')->middleware('auth');
+
 Route::get('/addToCart/{product}','CartController@addToCart')->name('add.cart');
 Route::post('/products/{product}','CartController@updateCart')->name('cart.update');
 Route::post('/product/{product}','CartController@removeCart')->name('cart.remove');

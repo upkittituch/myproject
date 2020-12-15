@@ -83,6 +83,45 @@ class CartController extends Controller
         return view('checkout',compact('amount','cart','address'));
     }
 
+    public function checklater($amount,Request $request){
+        
+        $address = auth()->user()->addressed;  
+        
+        if(session()->has('cart')){
+            $cart = new Cart(session()->get('cart'));
+            
+         
+        }else{
+            $cart = null;
+        }  
+        
+        
+        return view('checkoutlater',compact('amount','cart','address'));
+    }
+    public function chargelater(Request $request){
+        
+        if(session()->has('cart')){
+            $cart = new Cart(session()->get('cart'));
+            
+        }else{
+            $cart = null;
+        } 
+    
+            auth()->user()->orders()->create([
+                'cart'=>serialize(session()->get('cart')),
+                'name'=>$request->name   ,
+                'address'=>$request->address,
+                'payment'=>$request->payment
+               
+               
+            ]);
+            session()->forget('cart');
+                
+            return redirect()->to('/thankyou');    
+       
+         
+    }
+
     public function charge(Request $request){
         
         $charge = Stripe::charges()->create([
@@ -162,15 +201,15 @@ class CartController extends Controller
         $up=json_encode($order);
         $cut=mb_substr($up,12,-3);
 
-        if($orders->tracking=='packing'){
+        if($orders->tracking=='กำลังจัดเตรียมสินค้า'){
             $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient('+sCKQKTaNez/c8BzdGJRxk8NAeqNjRAmBvGdmqlqPPRxhyA9xZHh5av2RhW9VCEdl2KPfislOKZuuTw6fuOuGDs6JklgztzFNy/NWpmG5jX47Wo1exyp70BioFL9mxsEkhWwSGKEit4hxhDdT8dYNgdB04t89/1O/w1cDnyilFU=+sCKQKTaNez/c8BzdGJRxk8NAeqNjRAmBvGdmqlqPPRxhyA9xZHh5av2RhW9VCEdl2KPfislOKZuuTw6fuOuGDs6JklgztzFNy/NWpmG5jX47Wo1exyp70BioFL9mxsEkhWwSGKEit4hxhDdT8dYNgdB04t89/1O/w1cDnyilFU=');
             $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => 'f1dbce386793edb47c112e096efefa29']);
-            $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('สินค้าของท่านกำลังดำเนินการ');//text
+            $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('คำสั่งชื่อเลขที่ :'.$orderid."\n".'สินค้าของท่านกำลังจัดเตรียมสินค้า');//text
             $response = $bot->pushMessage($cut, $textMessageBuilder); 
-        }elseif ($orders->tracking=='delivered') {
+        }elseif ($orders->tracking=='กำลังจัดส่ง') {
             $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient('+sCKQKTaNez/c8BzdGJRxk8NAeqNjRAmBvGdmqlqPPRxhyA9xZHh5av2RhW9VCEdl2KPfislOKZuuTw6fuOuGDs6JklgztzFNy/NWpmG5jX47Wo1exyp70BioFL9mxsEkhWwSGKEit4hxhDdT8dYNgdB04t89/1O/w1cDnyilFU=+sCKQKTaNez/c8BzdGJRxk8NAeqNjRAmBvGdmqlqPPRxhyA9xZHh5av2RhW9VCEdl2KPfislOKZuuTw6fuOuGDs6JklgztzFNy/NWpmG5jX47Wo1exyp70BioFL9mxsEkhWwSGKEit4hxhDdT8dYNgdB04t89/1O/w1cDnyilFU=');
             $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => 'f1dbce386793edb47c112e096efefa29']);
-            $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('สินค้าของท่านกำลังจัดส่ง'."\n".'จัดส่งโดย : '.$orders->company."\n".'เลขสินค้าของท่านเราจะส่งถัดจากข้อความนี้ ');//text
+            $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('คำสั่งชื่อเลขที่ :'.$orderid."\n".'สินค้าของท่านกำลังจัดส่ง'."\n".'จัดส่งโดย : '.$orders->company."\n".'เลขสินค้าของท่านเราจะส่งถัดจากข้อความนี้ ');//text
             $text= new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($orders->tracking_number);
             
             $response = $bot->pushMessage($cut, $textMessageBuilder); 
@@ -211,17 +250,18 @@ class CartController extends Controller
              $up =$p->totalPrice; 
             //  $js=$p->items;     
             //  $product=json_encode($js);
-            foreach($p->items as $product){
-                $js=json_encode($product);
+                $count=$p->items;
+                $list=count($count);
+                // $list=count($p);
 
-            }
+            
               
         }
         // echo($cut);
-        if($orders->payment=='success'){
+        if($orders->payment=='ยืนยันเรียบร้อยแล้ว'){
             $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient('+sCKQKTaNez/c8BzdGJRxk8NAeqNjRAmBvGdmqlqPPRxhyA9xZHh5av2RhW9VCEdl2KPfislOKZuuTw6fuOuGDs6JklgztzFNy/NWpmG5jX47Wo1exyp70BioFL9mxsEkhWwSGKEit4hxhDdT8dYNgdB04t89/1O/w1cDnyilFU=+sCKQKTaNez/c8BzdGJRxk8NAeqNjRAmBvGdmqlqPPRxhyA9xZHh5av2RhW9VCEdl2KPfislOKZuuTw6fuOuGDs6JklgztzFNy/NWpmG5jX47Wo1exyp70BioFL9mxsEkhWwSGKEit4hxhDdT8dYNgdB04t89/1O/w1cDnyilFU=');
             $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => 'f1dbce386793edb47c112e096efefa29']);
-            $text = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('คำสั่งชื่อเลขที่ :'.$orderid."\n".'ราคารวม  : '.$up.' บาท'."\n".'การชำระเงินของท่านได้รับการยืนยันแล้ว'."\n".'ทางเราจะรีบดำเนินการในขั้นตอนถัดไปขอบคุณครับ');
+            $text = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('คำสั่งชื่อเลขที่ :'.$orderid."\n".'ราคารวม  : '.$up.' บาท'."\n".'รายการสินค้า : '.$list.' รายการ'."\n".'การชำระเงินของท่านได้รับการยืนยันแล้ว'."\n".'ขอบคุณที่ใช้บริการครับ');
             $response = $bot->pushMessage($cut, $text); 
         }else{
             $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient('+sCKQKTaNez/c8BzdGJRxk8NAeqNjRAmBvGdmqlqPPRxhyA9xZHh5av2RhW9VCEdl2KPfislOKZuuTw6fuOuGDs6JklgztzFNy/NWpmG5jX47Wo1exyp70BioFL9mxsEkhWwSGKEit4hxhDdT8dYNgdB04t89/1O/w1cDnyilFU=+sCKQKTaNez/c8BzdGJRxk8NAeqNjRAmBvGdmqlqPPRxhyA9xZHh5av2RhW9VCEdl2KPfislOKZuuTw6fuOuGDs6JklgztzFNy/NWpmG5jX47Wo1exyp70BioFL9mxsEkhWwSGKEit4hxhDdT8dYNgdB04t89/1O/w1cDnyilFU=');
@@ -229,7 +269,7 @@ class CartController extends Controller
             
          }
          return redirect('auth/orders');
-            // dd($p);
+            // dd($list);
     }
     public function search(Request $request){
         $search= $request->get('search');

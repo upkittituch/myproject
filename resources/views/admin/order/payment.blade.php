@@ -19,8 +19,8 @@
 
                           <select name="payment" id="payment">
                             <option value="{{$orders->payment}}">{{$orders->payment}}</option>
-                            <option value="success">success</option>
-                            <option value="cancel">cancel</option>
+                            <option value="ยืนยันเรียบร้อยแล้ว">ยืนยันเรียบร้อยแล้ว</option>
+                            <option value="ยกเลิก">ยกเลิก</option>
                           </select>
                      
                     </div>

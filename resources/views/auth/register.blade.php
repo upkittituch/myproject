@@ -97,7 +97,7 @@
                                  
                                 </div>
                                 <div class="auth-form__single-field space-mb--40">
-                                    <p class="auth-form__info-text">Already have an account? <a href="login.html">Sign in Now</a></p>
+                                    <p class="auth-form__info-text">Already have an account? <a href="{{ route('login') }}">Sign in Now</a></p>
                                 </div>
                                 <button class="auth-form__button" type="submit">Register'</button>
                              
