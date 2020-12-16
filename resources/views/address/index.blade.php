@@ -35,7 +35,9 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-3">
-                        
+                    
+                        <a href="{{route('shop')}}" class="back-link"> <i class="fas fa-angle-left"></i> Back</a>
+                   
                     </div>
                     <div class="col-6">
                         <h1 class="page-title text-center">Address</h1>
@@ -61,7 +63,7 @@
                         <th>ชื่อ</th>
                         <th>ดูข้อมูล</th>
                         <th>แก้ไข</th>
-                        <th>ลบ</th>
+                        
                        
                         
                       </tr>
@@ -87,13 +89,7 @@
                                 <button class="btn btn-warning"style="width:92; height:20">แก้ไข</button>
                             </a>
                         </td>
-                        <td>
-                        <form action="{{route('address.destroy',[$item->id])}}" method="post">@csrf  
-                        {{method_field('DELETE')}}
-                        <input type="submit" value="ลบ"class="btn btn-warning" style="width:92; height:20" onclick=" return confirm('u want delete ? id {{$item->id}} {{$item->title}}') ">
-                        </form>
-                        </td>
-
+                     
                       </tr>
                       @endforeach
                       
