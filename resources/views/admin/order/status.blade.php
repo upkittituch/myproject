@@ -21,7 +21,7 @@
                       <label for="">tracking</label>
                           <select name="tracking" id="tracking">
                             <option value="{{$orders->tracking}}">{{$orders->tracking}}</option>
-                            <option value="กำลังจัดเตรียมสินค้า">กำลังจัดเตรียมสินค้า</option>
+                            <option value="แพ็คสินค้าเรียบร้อย">แพ็คสินค้าเรียบร้อย</option>
                             <option value="กำลังจัดส่ง">กำลังจัดส่ง</option>
                           </select>
                     </div>
@@ -38,7 +38,7 @@
                           
                     </div>
                     <div class="form-group">
-                                {!! Form::label('tracking number') !!}
+                                {!! Form::label('tracking number') !!}<sup class="star">*ในกรณีที่ยังไม่ได้จัดส่ง กรอกเป็น - แทน </sup>
                                 {!! Form::text('tracking_number',null,["class"=>"form-control" ,'placeholder'=>'ตัวอย่าง: 1Dw2321FES', 'required'])!!}
                      </div>
                     
@@ -47,7 +47,8 @@
                     <button type="submit" class="btn btn-primary">Update</button>
                     @endif
                       </div>
-                </div>
+                
+                
                 
               </div>
             </form>
@@ -55,4 +56,9 @@
           </div>
           
 </div>
+<style>
+    .star{
+color:red;
+}
+</style>
 @endsection

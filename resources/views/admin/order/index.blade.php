@@ -69,7 +69,7 @@
                           
                           @if($order->tracking =='กำลังดำเนินการ')
                           <td><span style='font-size:17px' class="badge badge-warning">{{$order->tracking}}</span></td>
-                          @elseif ($order->tracking=='กำลังจัดเตรียมสินค้า')
+                          @elseif ($order->tracking=='แพ็คสินค้าเรียบร้อย')
                           <td ><span style='font-size:17px' class="badge badge-secondary">{{$order->tracking}}</span></td>  
                           @elseif ($order->tracking =='กำลังจัดส่ง')
                           <td ><span style='font-size:17px' class="badge badge-success">{{$order->tracking}}</span></td>

@@ -201,10 +201,10 @@ class CartController extends Controller
         $up=json_encode($order);
         $cut=mb_substr($up,12,-3);
 
-        if($orders->tracking=='กำลังจัดเตรียมสินค้า'){
+        if($orders->tracking=='แพ็คสินค้าเรียบร้อย'){
             $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient('+sCKQKTaNez/c8BzdGJRxk8NAeqNjRAmBvGdmqlqPPRxhyA9xZHh5av2RhW9VCEdl2KPfislOKZuuTw6fuOuGDs6JklgztzFNy/NWpmG5jX47Wo1exyp70BioFL9mxsEkhWwSGKEit4hxhDdT8dYNgdB04t89/1O/w1cDnyilFU=+sCKQKTaNez/c8BzdGJRxk8NAeqNjRAmBvGdmqlqPPRxhyA9xZHh5av2RhW9VCEdl2KPfislOKZuuTw6fuOuGDs6JklgztzFNy/NWpmG5jX47Wo1exyp70BioFL9mxsEkhWwSGKEit4hxhDdT8dYNgdB04t89/1O/w1cDnyilFU=');
             $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => 'f1dbce386793edb47c112e096efefa29']);
-            $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('คำสั่งชื้อเลขที่ :'.$orderid."\n".'สินค้าของท่านกำลังจัดเตรียมสินค้า');//text
+            $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('คำสั่งชื้อเลขที่ :'.$orderid."\n".'สินค้าของท่านแพ็คสินค้าเรียบร้อย');//text
             
             $response = $bot->pushMessage($cut, $textMessageBuilder); 
         }elseif ($orders->tracking=='กำลังจัดส่ง') {

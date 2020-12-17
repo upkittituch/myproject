@@ -26,11 +26,13 @@
                       <option value="ยืนยันคำสั่งซื้อแบบเก็บเงินปลายทาง">ยืนยันคำสั่งซื้อแบบเก็บเงินปลายทาง</option>
                       </select>
                       @elseif($orders->payment =='ยืนยันคำสั่งซื้อแบบเก็บเงินปลายทาง')
+                      <label for="">payment</label>
                       <select name="payment" id="payment">
                       <option value="ยืนยันคำสั่งซื้อแบบเก็บเงินปลายทาง">ยืนยันคำสั่งซื้อแบบเก็บเงินปลายทาง</option>
                       <option value="ยกเลิก">ยกเลิก</option>
                       </select>
                       @else
+                      <label for="">payment</label>
                           <select name="payment" id="payment">
                             <option value="{{$orders->payment}}">{{$orders->payment}}</option>
                             <option value="ยืนยันเรียบร้อยแล้ว">ยืนยันเรียบร้อยแล้ว</option>
