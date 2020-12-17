@@ -39,7 +39,8 @@ Route::post('/products/{product}','CartController@updateCart')->name('cart.updat
 Route::post('/product/{product}','CartController@removeCart')->name('cart.remove');
 Route::get('/cart','CartController@showCart')->name('cart.show');
 Route::get('/tracking/{userid}/{orderid}/{address}','CartController@tracking')->name('user.tracking')->middleware('auth'); 
-
+Route::get('/tracking/{userid}/{orderid}/edit','CartController@editStatus')->name('tracking.edit');
+Route::put('/tracking/{userid}/{orderid}/update','CartController@updateStatus')->name('tracking.update');
 
 Route::resource('company','CompanyController');
 Route::get('/shop', 'FrontendController@index')->name('shop')->middleware('auth');

@@ -25,7 +25,7 @@
                         </div>
                         <div class="col-md-12">
                         <div class="form-group">
-                            <label for="">Choose Category</label>
+                            <label for="">Choose Category</label> 
                               <select name="category"  class="form-control" >
                                 <option value="">select</option>
                                 @foreach(App\Category::all() as $key=> $category)
@@ -41,7 +41,7 @@
                                 {!! Form::number('price',null,["class"=>"form-control",'placeholder'=>'0', 'required'])!!}
                             </div>
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-12"><sup class="star">*ต้องอัพโหลดเป็นไฟล์ jpeg หรือ png </sup>
                             <div class="form-group">
                                 {!! Form::label('image upload') !!}
                                 {!! Form::file('image') !!}
@@ -58,4 +58,9 @@
                 
     
 </div>     
+<style>
+    .star{
+color:red;
+}
+</style>
 @endsection

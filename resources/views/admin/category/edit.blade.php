@@ -19,7 +19,7 @@
                       <input type="text" name="name" class="form-control" id="" aria-describedby=""
                         placeholder="Enter name of category" value="{{$category->name}}">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group"><sup class="star">*ต้องอัพโหลดเป็นไฟล์ svg </sup>
                       <div class="custom-file">
                         <input type="file" class="custom-file-input " id="customFile" name="image">
                         <label class="custom-file-label  " for="customFile">Choose file</label>
@@ -36,4 +36,9 @@
           
           </div>
 </div>
+<style>
+    .star{
+color:red;
+}
+</style>
 @endsection

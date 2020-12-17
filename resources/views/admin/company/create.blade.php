@@ -14,7 +14,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 {!! Form::label('Company Name') !!}
-                                {!! Form::text('company_name',null,["class"=>"form-control" ,'placeholder'=>'company_name', 'required'])!!}
+                                {!! Form::text('company_name',null,["class"=>"form-control" ,'placeholder'=>'company name', 'required'])!!}
                             </div>
                             <input type="submit" value="save" class="btn btn-primary">
                             <a href="{{URL::previous()}}" class="btn btn-success">back</a>

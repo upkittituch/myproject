@@ -15,24 +15,32 @@
                 </div>
                 <div class="card-body">
                     <div class="form-group"> 
+                    @if($orders->tracking =='ได้รับสินค้าแล้ว')
+                      <h1>ผู้ใช้ได้รับสินค้าแล้ว</h1>
+                    
+                  
+                      @elseif($orders->payment =='เก็บเงินปลายทาง')
                       <label for="">payment</label>
-                      @if($orders->payment =='เก็บเงินปลายทาง')
                       <select name="payment" id="payment">
                       <option value="เก็บเงินปลายทาง">เก็บเงินปลายทาง</option>
+                      <option value="ยืนยันคำสั่งซื้อแบบเก็บเงินปลายทาง">ยืนยันคำสั่งซื้อแบบเก็บเงินปลายทาง</option>
                       </select>
-                      
+                      @elseif($orders->payment =='ยืนยันคำสั่งซื้อแบบเก็บเงินปลายทาง')
+                      <select name="payment" id="payment">
+                      <option value="ยืนยันคำสั่งซื้อแบบเก็บเงินปลายทาง">ยืนยันคำสั่งซื้อแบบเก็บเงินปลายทาง</option>
+                      <option value="ยกเลิก">ยกเลิก</option>
+                      </select>
                       @else
                           <select name="payment" id="payment">
                             <option value="{{$orders->payment}}">{{$orders->payment}}</option>
                             <option value="ยืนยันเรียบร้อยแล้ว">ยืนยันเรียบร้อยแล้ว</option>
-                            <option value="ยกเลิก">ยกเลิก</option>
                           </select>
-                          @endif
+                     
                     </div>
-                    
                     <br>   
                     <button type="submit" class="btn btn-primary">Update</button>
-                </div>
+                    @endif
+                </div></div>
                 
               </div>
               

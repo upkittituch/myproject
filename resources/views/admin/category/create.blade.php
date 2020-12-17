@@ -17,12 +17,13 @@
                                 {!! Form::text('name',null,["class"=>"form-control" ,'placeholder'=>'name', 'required'])!!}
                             </div>
                         </div>
-                            <div class="col-md-12">
-                                <div class="form-group">
+                            <div class="col-md-12"><sup class="star">*ต้องอัพโหลดเป็นไฟล์ svg </sup>
+                                <div class="form-group" >
                                     {!! Form::label('image upload') !!}
                                     {!! Form::file('image') !!}
 
                                 </div>
+                                
                              </div>
                             <input type="submit" value="save" class="btn btn-primary">
                             <a href="{{URL::previous()}}" class="btn btn-success">back</a>
@@ -33,5 +34,9 @@
                                     
                 
     </div>
-     
+<style>
+    .star{
+color:red;
+}
+</style>
 @endsection

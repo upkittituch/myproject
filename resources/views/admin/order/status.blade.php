@@ -14,8 +14,10 @@
                   <h6 class="m-0 font-weight-bold text-primary">edit</h6>
                 </div>
                 <div class="card-body">
-                   
                     <div class="form-group"> 
+                    @if($orders->tracking == 'ได้รับสินค้าแล้ว')
+                      <h1>ผู้ใช้ได้รับสินค้าแล้ว</h1>
+                    @else
                       <label for="">tracking</label>
                           <select name="tracking" id="tracking">
                             <option value="{{$orders->tracking}}">{{$orders->tracking}}</option>
@@ -38,11 +40,15 @@
                     <div class="form-group">
                                 {!! Form::label('tracking number') !!}
                                 {!! Form::text('tracking_number',null,["class"=>"form-control" ,'placeholder'=>'ตัวอย่าง: 1Dw2321FES', 'required'])!!}
-                            </div>
+                     </div>
                     
-                    <br>   
+                    <br> 
+                   
                     <button type="submit" class="btn btn-primary">Update</button>
+                    @endif
+                      </div>
                 </div>
+                
               </div>
             </form>
 

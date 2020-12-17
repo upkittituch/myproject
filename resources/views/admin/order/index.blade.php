@@ -62,6 +62,8 @@
                           @elseif ($order->payment =='ยังไม่ได้รับการยืนยัน')
                           <td ><span style='font-size:17px' class="badge badge-warning">{{$order->payment}}</span></td>  
                           @elseif ($order->payment =='เก็บเงินปลายทาง')
+                          <td ><span style='font-size:17px' class="badge badge-secondary">{{$order->payment}}</span></td> 
+                          @elseif ($order->payment =='ยืนยันคำสั่งซื้อแบบเก็บเงินปลายทาง')
                           <td ><span style='font-size:17px' class="badge badge-info">{{$order->payment}}</span></td> 
                           @endif
                           
@@ -70,7 +72,9 @@
                           @elseif ($order->tracking=='กำลังจัดเตรียมสินค้า')
                           <td ><span style='font-size:17px' class="badge badge-secondary">{{$order->tracking}}</span></td>  
                           @elseif ($order->tracking =='กำลังจัดส่ง')
-                          <td ><span style='font-size:17px' class="badge badge-success">{{$order->tracking}}</span></td>   
+                          <td ><span style='font-size:17px' class="badge badge-success">{{$order->tracking}}</span></td>
+                          @elseif ($order->tracking =='ได้รับสินค้าแล้ว')
+                          <td ><span style='font-size:17px' class="badge badge-light"  >{{$order->tracking}}</span></td>    
                           @endif
                         
                         <td>
@@ -114,5 +118,13 @@
           <!--Row-->
         </div>
         </div>
+<script>
+window.setTimeout(function(){
+//refresh the page after 900,000 miliseconds (15 minutes)
 
+
+//reload the page (javascript has many ways of doing this)
+location.reload();
+},60000);
+</script>
   @endsection

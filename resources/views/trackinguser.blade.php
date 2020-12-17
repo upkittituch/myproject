@@ -122,6 +122,15 @@
 
             </div>  
             </article>
+            <form action="{{route('tracking.update',[$informs->user_id,$informs->id])}}" method="POST" enctype="multipart/form-data">@csrf
+            {{method_field('PUT')}}  {!! csrf_field() !!}
+            <div class="form-group"> 
+            <input type="hidden" id="tracking" name="tracking" value="ได้รับสินค้าแล้ว">
+            <input type="hidden" id="company" name="company" value="{{$informs->company}}">
+            <input type="hidden" id="tracking_number" name="tracking_number" value="{{$informs->tracking_number}}">
+            </div>
+            <button type="submit" class="btn btn-warning"style="width:92; height:20">ได้รับสินค้าแล้ว</button>
+            </form>
             
     </div>    <br><br><br>
                 
